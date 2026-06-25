@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FinTrack — Your bank already texts you the truth</title>
+<meta name="description" content="FinTrack reads your bank and mobile banking SMS the moment they land and turns them into a clean, categorized ledger. Budgets, debts, recurring bills, and insights — built for how Bangladesh actually banks.">
+<meta property="og:title" content="FinTrack — Automatic expense tracking from your bank SMS">
+<meta property="og:description" content="No manual entry. No spreadsheets. FinTrack turns mobile banking alerts into an organized financial ledger.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/favicon.png">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Icon sprite (defined once, used via <use>) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="ic-sms" viewBox="0 0 24 24">
+      <rect x="4" y="4" width="16" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M8 15l-1.3 3.3a.5.5 0 0 0 .7.6L11 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="8.3" cy="9.5" r=".85" fill="currentColor" stroke="none"/>
+      <circle cx="12" cy="9.5" r=".85" fill="currentColor" stroke="none"/>
+      <circle cx="15.7" cy="9.5" r=".85" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="ic-receipt" viewBox="0 0 24 24">
+      <path d="M7 3h10v16l-1.7-1.1L13.6 19l-1.6-1.1L10.4 19l-1.7-1.1L7 19z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="9.3" y1="7.5" x2="14.7" y2="7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="9.3" y1="10.5" x2="14.7" y2="10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="9.3" y1="13.5" x2="13" y2="13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-wallet" viewBox="0 0 24 24">
+      <rect x="3" y="6" width="18" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3 10.2h18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="16.4" cy="14.3" r="1.25" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="ic-exchange" viewBox="0 0 24 24">
+      <path d="M4 8.2h11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M11.5 5.2l4 3-4 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M20 15.8H8.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M12.5 18.8l-4-3 4-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-recur" viewBox="0 0 24 24">
+      <path d="M4 12a8 8 0 0 1 13.9-5.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M20 12a8 8 0 0 1-13.9 5.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M17.5 3.6v3.6h-3.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6.5 20.4v-3.6h3.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-report" viewBox="0 0 24 24">
+      <path d="M3.5 20h17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M5.5 20v-6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M11 20V8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M16.5 20v-9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M4.5 11l4-3.6 3.5 2.4 4.3-5.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 2.4"/>
+    </symbol>
+    <symbol id="ic-star" viewBox="0 0 24 24">
+      <path d="M12 3.5l2.4 5 5.5.6-4.1 3.8 1.1 5.4L12 15.8l-4.9 2.5 1.1-5.4-4.1-3.8 5.5-.6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-shield" viewBox="0 0 24 24">
+      <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9 12.2l2.1 2 3.9-4.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#main">
+      <img src="assets/favicon.png" alt="" width="32" height="32">
+      FinTrack
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#trust">Privacy &amp; security</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a class="nav-cta" href="#download">Coming soon</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Personal finance, automated</span>
+        <h1>Your phone already<br>knows what you <em>spent</em>.</h1>
+        <p class="lede">FinTrack reads your bank and mobile banking alerts the moment they land, and quietly turns them into one clean, categorized ledger — no manual typing, no spreadsheets, no missed transactions.</p>
+        <div class="cta-row" id="download">
+          <a class="btn btn-primary" aria-disabled="true" href="#download" onclick="event.preventDefault()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            Coming soon on Google Play
+          </a>
+          <a class="btn btn-ghost" href="privacy.html">Read the Privacy Policy</a>
+        </div>
+        <p class="pill-note">FinTrack is in final testing ahead of launch. This page also serves as the app's official Play Store listing &amp; privacy reference.</p>
+      </div>
+
+      <div>
+        <div class="bloom-stage" role="img" aria-label="Six core FinTrack features arranged like the app icon: automatic SMS detection, receipt scanning, budgets, debt tracking, recurring bills, and reports.">
+          <div class="bloom-hub" aria-hidden="true">৳</div>
+          <div class="petal p1" data-label="SMS detect" tabindex="0" aria-hidden="true"><svg><use href="#ic-sms"/></svg></div>
+          <div class="petal p2" data-label="Receipts" tabindex="0" aria-hidden="true"><svg><use href="#ic-receipt"/></svg></div>
+          <div class="petal p3" data-label="Reports" tabindex="0" aria-hidden="true"><svg><use href="#ic-report"/></svg></div>
+          <div class="petal p4" data-label="Recurring" tabindex="0" aria-hidden="true"><svg><use href="#ic-recur"/></svg></div>
+          <div class="petal p5" data-label="Debts" tabindex="0" aria-hidden="true"><svg><use href="#ic-exchange"/></svg></div>
+          <div class="petal p6" data-label="Budgets" tabindex="0" aria-hidden="true"><svg><use href="#ic-wallet"/></svg></div>
+        </div>
+        <p class="bloom-caption">Auto SMS · Receipts · Budgets · Debts · Recurring · Reports</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOW: SMS to Ledger -->
+  <section class="flow">
+    <div class="wrap">
+      <div class="flow-head">
+        <span class="eyebrow">From notification chaos to one ledger</span>
+        <h2>You don't log transactions.<br>Your alerts already did.</h2>
+        <p>Every bKash, Nagad, Rocket, or bank SMS that lands on your phone already states the amount, the balance, and the time. FinTrack reads that text on-device, the moment it arrives, and files it under the right category — before you've even opened the app.</p>
+      </div>
+
+      <div class="flow-diagram" data-reveal>
+        <div class="sms-card">
+          <div class="src">Mobile banking</div>
+          <div class="body">You have sent <span class="amt">Tk 450.00</span> to 017XXXXXXXX. Fee Tk 5.00. Balance Tk 6,230.50.</div>
+        </div>
+        <div class="sms-card">
+          <div class="src">Bank alert</div>
+          <div class="body">Purchase of <span class="amt">BDT 1,250.00</span> at SUPERSHOP. Avl Bal BDT 8,430.00.</div>
+        </div>
+        <div class="sms-card">
+          <div class="src">Mobile banking</div>
+          <div class="body">Cash Out <span class="amt">Tk 2,000.00</span> successful. Charge Tk 18.00. Balance Tk 4,212.50.</div>
+        </div>
+      </div>
+      <div class="arrow-down" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M6 14l6 6 6-6"/></svg>
+      </div>
+      <div class="ledger-row" data-reveal>
+        <span class="cat"><span class="dot"></span>Groceries &amp; Shopping</span>
+        <span class="amount">− ৳1,250.00</span>
+        <span class="time">Today, 2:14 PM</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="steps" id="how">
+    <div class="wrap">
+      <div class="steps-head">
+        <span class="eyebrow">Setup, once</span>
+        <h2>Three steps. Then it just runs.</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step" data-reveal>
+          <span class="num">01</span>
+          <h3>Grant SMS access</h3>
+          <p>One Android permission, granted once. Everything is read on your device — you can revoke it any time from system settings.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="num">02</span>
+          <h3>Auto-detect &amp; categorize</h3>
+          <p>Incoming bank and mobile-banking alerts are parsed instantly and sorted into spending categories you can edit anytime.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="num">03</span>
+          <h3>See one clear ledger</h3>
+          <p>Review the day, set budgets, track debts and recurring bills, and watch insights build themselves from real activity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="wrap">
+      <div class="steps-head">
+        <span class="eyebrow">Everything in one app</span>
+        <h2>Built for how money actually moves.</h2>
+      </div>
+      <div class="grid8">
+
+        <div class="card" data-reveal>
+          <div class="icon-badge"><svg><use href="#ic-sms"/></svg></div>
+          <h3>Automatic SMS detection</h3>
+          <p>Bank and mobile-banking alerts become ledger entries the instant they arrive — no retyping.</p>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="icon-badge"><svg><use href="#ic-receipt"/></svg></div>
+          <h3>Receipt scanner</h3>
+          <p>Snap a paper receipt and FinTrack reads the amount, merchant, and date for you.</p>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="icon-badge"><svg><use href="#ic-wallet"/></svg></div>
+          <h3>Smart budgets</h3>
+          <p>Set a monthly limit per category and get nudged before you overspend, not after.</p>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="icon-badge"><svg><use href="#ic-exchange"/></svg></div>
+          <h3>Debt &amp; loan tracker</h3>
+          <p>Keep tabs on money you owe and money owed to you, with due-date reminders.</p>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="icon-badge"><svg><use href="#ic-recur"/></svg></div>
+          <h3>Recurring bills</h3>
+          <p>Rent, subscriptions, EMIs — scheduled once, tracked automatically every cycle.</p>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="icon-badge"><svg><use href="#ic-report"/></svg></div>
+          <h3>Calendar &amp; reports</h3>
+          <p>A day-by-day calendar of spending, plus charts that show exactly where money goes.</p>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="icon-badge"><svg><use href="#ic-star"/></svg></div>
+          <h3>Streaks &amp; rewards</h3>
+          <p>Log consistently and earn points for sticking with your budget, day after day.</p>
+        </div>
+
+        <div class="card" data-reveal>
+          <div class="icon-badge"><svg><use href="#ic-shield"/></svg></div>
+          <h3>Bank-grade privacy</h3>
+          <p>Biometric lock, encrypted local storage, and a sealed data space per account.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust" id="trust">
+    <div class="wrap">
+      <span class="eyebrow">Why it's safe to hand over this much detail</span>
+      <h2>Your financial data stays yours.</h2>
+      <div class="trust-grid">
+        <div class="trust-item" data-reveal>
+          <span class="mark"><svg><use href="#ic-shield"/></svg></span>
+          <div>
+            <h4>Local-first storage</h4>
+            <p>Your ledger lives on your device, encrypted, before anything ever touches the cloud.</p>
+          </div>
+        </div>
+        <div class="trust-item" data-reveal>
+          <span class="mark"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="3"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg></span>
+          <div>
+            <h4>Lock with fingerprint or face</h4>
+            <p>Every time you open the app, biometric authentication stands between your money and anyone else.</p>
+          </div>
+        </div>
+        <div class="trust-item" data-reveal>
+          <span class="mark"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>
+          <div>
+            <h4>One sealed space per account</h4>
+            <p>Switching accounts never leaks another account's numbers — each gets its own isolated data.</p>
+          </div>
+        </div>
+        <div class="trust-item" data-reveal>
+          <span class="mark"><svg><use href="#ic-sms"/></svg></span>
+          <div>
+            <h4>SMS stays on your device</h4>
+            <p>Messages are read on-device only to detect transactions — the raw text is never uploaded or shared.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <div class="wrap">
+      <span class="eyebrow">Built for Bangladesh</span>
+      <h2>Built for how Bangladesh actually banks.</h2>
+      <p>bKash, Nagad, Rocket, and bank SMS — supported alongside full manual entry. Free to start, with an optional premium tier for power users.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" aria-disabled="true" href="#download" onclick="event.preventDefault()">Coming soon on Google Play</a>
+        <a class="btn btn-ghost" href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="#main">
+        <img src="assets/favicon.png" alt="" width="32" height="32">
+        FinTrack
+      </a>
+      <p class="tag">A smart finance manager built around how Bangladesh actually banks — automatic, private, and yours.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Product</h5>
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#trust">Privacy &amp; security</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="mailto:support@example.com">support@example.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span data-year>2026</span> FinTrack. All rights reserved.</span>
+    <span>com.fintrack.app</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
