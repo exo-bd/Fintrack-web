@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support — FinTrack</title>
+<meta name="description" content="Get help with FinTrack, request account or data deletion, and find answers to common questions.">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#doc-main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/favicon.png" alt="" width="32" height="32">
+      FinTrack
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#features">Features</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="doc-hero">
+  <div class="wrap">
+    <span class="eyebrow">We're here to help</span>
+    <h1>Support</h1>
+    <p class="updated">Questions, account deletion requests, and troubleshooting — all in one place.</p>
+  </div>
+</section>
+
+<section class="doc-body" id="doc-main">
+  <div class="wrap doc-layout">
+
+    <nav class="toc" aria-label="Sections">
+      <h5>On this page</h5>
+      <a href="#contact">Contact us</a>
+      <a href="#delete-account">Delete account &amp; data</a>
+      <a href="#faq">Frequently asked questions</a>
+      <a href="#permissions-help">Permissions, explained</a>
+      <a href="#report">Report a problem</a>
+    </nav>
+
+    <article class="doc">
+
+      <h2 id="contact">Contact us</h2>
+      <p>For anything FinTrack-related — bugs, billing questions, feature requests, or data requests — email us and we'll get back to you as soon as we can.</p>
+      <p>
+        <button class="copy-btn" data-copy="support@example.com" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+          <span class="copy-label"><span class="placeholder">support@example.com</span></span>
+        </button>
+      </p>
+      <p class="muted" style="font-size:13.5px;margin-top:10px;">We typically reply within 2–3 business days.</p>
+
+      <h2 id="delete-account">Delete your account &amp; data</h2>
+      <div class="callout-important">
+        <h3>You can request full deletion — even without the app installed</h3>
+        <p>Deleting the app from your phone does <strong>not</strong> delete your account or your data from our servers. Use one of the options below to remove everything permanently.</p>
+      </div>
+      <p><strong>Option 1 — In the app:</strong> open FinTrack → Settings → Account → Delete Account, then confirm. This immediately starts the deletion process.</p>
+      <p><strong>Option 2 — From the web (no app required):</strong> email us at the address above with the subject line <strong>"Delete my FinTrack account"</strong> from the email address associated with your account, including:</p>
+      <ul>
+        <li>The email or phone number you used to sign in to FinTrack</li>
+        <li>Confirmation that you want your account <em>and</em> all associated data permanently deleted</li>
+      </ul>
+      <p>Once we verify the request, we permanently delete your account profile, transactions, budgets, debts, recurring bills, reward progress, and any synced receipt images — we do not deactivate or freeze the account, we remove it. This is usually completed within <span class="placeholder">[X business days — set your real turnaround time]</span>. We may retain a narrow set of data where law requires it (for example, billing records); see our <a href="privacy.html#retention">Retention policy</a> for details.</p>
+      <p class="muted" style="font-size:13.5px;">If you only want specific data removed (for example, just your receipt images) rather than your whole account, mention that instead in your email and we'll action that narrower request.</p>
+
+      <h2 id="faq">Frequently asked questions</h2>
+
+      <details class="faq-item">
+        <summary>Is my SMS content uploaded anywhere?<span class="plus">+</span></summary>
+        <p>No. SMS messages are read on your device only, to detect transactions. FinTrack extracts the amount, date, and sender pattern to create a ledger entry — the raw message text itself is never uploaded to our servers.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I turn off automatic SMS detection?<span class="plus">+</span></summary>
+        <p>Go to Settings → Permissions inside the app, or revoke the SMS permission from Android Settings → Apps → FinTrack → Permissions. You can keep using FinTrack with fully manual entry.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>FinTrack didn't detect a transaction — what do I do?<span class="plus">+</span></summary>
+        <p>Some banks and mobile-banking services occasionally change their SMS wording, which can cause a missed detection. Add the transaction manually for now, and let us know the bank/service name via Support so we can improve detection for that sender.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I cancel my premium subscription?<span class="plus">+</span></summary>
+        <p>Open the Google Play Store app → tap your profile picture → Payments &amp; subscriptions → Subscriptions → FinTrack → Cancel. Your premium features remain active until the end of the billing period you already paid for.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>I deleted the app — is my account gone too?<span class="plus">+</span></summary>
+        <p>No, uninstalling only removes the app from your phone. Your account and data remain on our servers until you explicitly request deletion — see <a href="#delete-account">Delete your account &amp; data</a> above.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I export my data?<span class="plus">+</span></summary>
+        <p>Yes — contact us through Support and we'll provide a copy of your data in a portable format.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>I'm outside Bangladesh — will FinTrack still work for me?<span class="plus">+</span></summary>
+        <p>Yes. Budgets, debts, recurring bills, receipt scanning, and manual entry all work anywhere. Automatic SMS detection is tuned for Bangladeshi banks and mobile financial services (bKash, Nagad, Rocket, and major local banks), so it may not recognize alerts from banks outside Bangladesh yet. Let us know your bank's SMS format via Support and we'll look into adding it.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>I'm in the EU/UK or California — do I have extra rights?<span class="plus">+</span></summary>
+        <p>Yes. EEA/UK residents have rights under the GDPR (including access, erasure, and the right to lodge a complaint with a supervisory authority), and California residents have rights under the CCPA/CPRA (including the right to know, delete, and opt out of personalized-ad sharing). See <a href="privacy.html#regional">Regional disclosures</a> in our Privacy Policy for details, or just contact us — we honor these rights regardless of where the request comes from.</p>
+      </details>
+
+      <h2 id="permissions-help">Permissions, explained</h2>
+      <p>FinTrack asks for a few Android permissions, each tied to a specific feature, never bundled together by default. You can grant or revoke any of them individually from Android Settings → Apps → FinTrack → Permissions at any time. For the full breakdown of what each permission does and why, see the <a href="privacy.html#permissions">Permissions table in our Privacy Policy</a>.</p>
+
+      <h2 id="report">Report a problem</h2>
+      <p>Found a bug, a miscategorized transaction pattern, or something that just looks broken? Email us at the address above with:</p>
+      <ul>
+        <li>A short description of what happened and what you expected instead</li>
+        <li>Your device model and Android version, if known</li>
+        <li>A screenshot, if it's a visual issue</li>
+      </ul>
+      <p>This helps us reproduce and fix issues much faster.</p>
+
+    </article>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="index.html">
+        <img src="assets/favicon.png" alt="" width="32" height="32">
+        FinTrack
+      </a>
+      <p class="tag">A smart finance manager built around how Bangladesh actually banks.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Product</h5>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#features">Features</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+      </div>
+      <div class="footer-col">
+        <h5>Help</h5>
+        <a href="support.html">Support</a>
+        <a href="support.html#delete-account">Delete my account</a>
+        <a href="mailto:support@example.com">support@example.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span data-year>2026</span> FinTrack. All rights reserved.</span>
+    <span>com.fintrack.app</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

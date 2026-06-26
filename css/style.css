@@ -433,6 +433,7 @@ h1,h2,h3{ font-family: var(--font-display); margin:0; letter-spacing: -0.02em; }
 .toc a:hover{ color: var(--ink); border-color: var(--cyan); }
 .doc h2{ font-size: 21px; margin: 44px 0 14px; color: var(--ink); scroll-margin-top: 96px; }
 .doc h2:first-child{ margin-top:0; }
+.doc h3{ font-size: 16.5px; margin: 26px 0 10px; color: var(--ink); scroll-margin-top: 96px; }
 .doc p, .doc li{ font-size: 15px; line-height:1.75; color:#33394D; }
 .doc ul{ padding-left: 20px; }
 .doc li{ margin-bottom: 8px; }
@@ -446,6 +447,49 @@ h1,h2,h3{ font-family: var(--font-display); margin:0; letter-spacing: -0.02em; }
   padding: 16px 18px; border-radius: 10px; margin: 22px 0;
   font-size: 14px; color:#33394D;
 }
+.doc .callout-important{
+  background: #FFF8E8; border:1px solid #F0D89A; border-left:4px solid var(--gold-2);
+  padding: 20px 22px; border-radius: 12px; margin: 24px 0;
+}
+.doc .callout-important h3{ font-size:16px; margin:0 0 8px; color:var(--ink); }
+.doc .callout-important p{ margin:0 0 10px; }
+.doc .callout-important p:last-child{ margin-bottom:0; }
+
+/* FAQ accordion (native <details>) */
+.faq-item{
+  border-bottom: 1px solid var(--line-light);
+  padding: 4px 0;
+}
+.faq-item summary{
+  cursor: pointer;
+  list-style: none;
+  display:flex; align-items:center; justify-content:space-between; gap:14px;
+  padding: 16px 2px;
+  font-family: var(--font-display); font-weight:600; font-size:15.5px;
+  color: var(--ink);
+}
+.faq-item summary::-webkit-details-marker{ display:none; }
+.faq-item summary .plus{
+  flex:none; width:22px; height:22px; border-radius:50%;
+  border:1px solid var(--line-light);
+  display:flex; align-items:center; justify-content:center;
+  font-family: var(--font-mono); font-size:15px; color: var(--gold-2);
+  transition: transform .2s ease;
+}
+.faq-item[open] summary .plus{ transform: rotate(45deg); }
+.faq-item p{ padding: 0 2px 16px; margin:0; color:#3D4664; font-size:14.5px; }
+
+/* Copy-to-clipboard button */
+.copy-btn{
+  display:inline-flex; align-items:center; gap:8px;
+  background: var(--ink); color:#fff;
+  border:none; padding: 11px 18px; border-radius: 999px;
+  font-family: var(--font-body); font-weight:600; font-size:13.5px;
+  cursor:pointer;
+}
+.copy-btn:hover{ background:#1C2A52; }
+.copy-btn svg{ width:15px; height:15px; }
+.copy-btn[data-copied="true"]{ background: #1F8A52; }
 @media (max-width: 860px){
   .doc-layout{ grid-template-columns: 1fr; }
   .toc{ position:static; }

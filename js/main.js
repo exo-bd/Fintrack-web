@@ -58,4 +58,37 @@
   // Footer year
   var yearEl = document.querySelector('[data-year]');
   if (yearEl){ yearEl.textContent = new Date().getFullYear(); }
+
+  // Copy-to-clipboard buttons (e.g. support email)
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = btn.getAttribute('data-copy') || '';
+      var done = function(){
+        var original = btn.querySelector('.copy-label');
+        var prevHTML = original ? original.innerHTML : '';
+        btn.setAttribute('data-copied', 'true');
+        if (original) original.textContent = 'Copied!';
+        setTimeout(function(){
+          btn.removeAttribute('data-copied');
+          if (original) original.innerHTML = prevHTML;
+        }, 1800);
+      };
+      var fallbackCopy = function(){
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch(e){}
+        document.body.removeChild(ta);
+        done();
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
+      }
+    });
+  });
 })();
