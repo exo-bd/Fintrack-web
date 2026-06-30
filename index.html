@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FinTrack — Your bank already texts you the truth</title>
-<meta name="description" content="FinTrack reads your bank and mobile banking SMS the moment they land and turns them into a clean, categorized ledger. Budgets, debts, recurring bills, and insights — built for how Bangladesh actually banks.">
-<meta property="og:title" content="FinTrack — Automatic expense tracking from your bank SMS">
-<meta property="og:description" content="No manual entry. No spreadsheets. FinTrack turns mobile banking alerts into an organized financial ledger.">
+<title>FinTrack — Every account, every habit, one app</title>
+<meta name="description" content="FinTrack brings your cash, bank accounts, and mobile wallets together with budgets, debt tracking, recurring bills, AI insights, reports, and a motivating dose of gamification and community — built for Bangladesh, ready for anyone.">
+<meta property="og:title" content="FinTrack — Every account, every habit, one app">
+<meta property="og:description" content="Budgets, debts, recurring bills, AI insights, reports, and rewards — your whole financial life, organized.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="assets/favicon.png">
 <link rel="icon" href="assets/favicon.png" type="image/png">
@@ -22,12 +22,74 @@
 <!-- Icon sprite (defined once, used via <use>) -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <symbol id="ic-sms" viewBox="0 0 24 24">
-      <rect x="4" y="4" width="16" height="11" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M8 15l-1.3 3.3a.5.5 0 0 0 .7.6L11 15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="8.3" cy="9.5" r=".85" fill="currentColor" stroke="none"/>
-      <circle cx="12" cy="9.5" r=".85" fill="currentColor" stroke="none"/>
-      <circle cx="15.7" cy="9.5" r=".85" fill="currentColor" stroke="none"/>
+    <symbol id="ic-accounts" viewBox="0 0 24 24">
+      <rect x="3" y="9.5" width="14" height="9.5" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <rect x="7" y="4.5" width="14" height="9.5" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <line x1="9.6" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-category" viewBox="0 0 24 24">
+      <path d="M11.5 3.5h5A2 2 0 0 1 18.5 5.5v5a2 2 0 0 1-.6 1.4l-7 7a2 2 0 0 1-2.8 0l-5-5a2 2 0 0 1 0-2.8l7-7a2 2 0 0 1 1.4-.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="14.7" cy="8.3" r="1.1" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="ic-calendar" viewBox="0 0 24 24">
+      <rect x="3.5" y="5" width="17" height="15" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <line x1="3.5" y1="9.5" x2="20.5" y2="9.5" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="8" y1="3" x2="8" y2="6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="16" y1="3" x2="16" y2="6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="8.2" cy="13.6" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="12" cy="13.6" r="1" fill="currentColor" stroke="none"/>
+      <circle cx="15.8" cy="13.6" r="1" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="ic-todo" viewBox="0 0 24 24">
+      <rect x="4" y="4" width="16" height="16" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M7.3 9.2l1.3 1.3 2.2-2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="13" y1="9" x2="17" y2="9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M7.3 15.2l1.3 1.3 2.2-2.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="13" y1="15" x2="17" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-ai" viewBox="0 0 24 24">
+      <path d="M12 3.5l1.2 3.6 3.6 1.2-3.6 1.2-1.2 3.6-1.2-3.6-3.6-1.2 3.6-1.2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M18.3 14l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-cloud" viewBox="0 0 24 24">
+      <path d="M7.5 17.5a4 4 0 0 1-.6-7.9 5 5 0 0 1 9.6-1.7A4.3 4.3 0 0 1 17 17.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M12 14.5v-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M9.8 12.3 12 10l2.2 2.3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-reminder" viewBox="0 0 24 24">
+      <circle cx="12" cy="13" r="7.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M12 9v4l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M9 3.5l-2.3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M15 3.5l2.3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-gamification" viewBox="0 0 24 24">
+      <path d="M9 4h6v4.5a3 3 0 0 1-6 0z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9 5H6.5a1.8 1.8 0 0 0 0 3.6H9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M15 5h2.5a1.8 1.8 0 0 1 0 3.6H15" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <line x1="12" y1="11.5" x2="12" y2="15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M8.5 19.5h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M9.7 15h4.6l.6 2.8H9.1z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-reward" viewBox="0 0 24 24">
+      <rect x="4" y="9.5" width="16" height="9.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <line x1="4" y1="13.3" x2="20" y2="13.3" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="12" y1="9.5" x2="12" y2="19" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M12 9.5c0-2.2-1.6-3.5-3-3.5-1.2 0-2 .8-2 2 0 1.5 1.8 1.5 5 1.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <path d="M12 9.5c0-2.2 1.6-3.5 3-3.5 1.2 0 2 .8 2 2 0 1.5-1.8 1.5-5 1.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-community" viewBox="0 0 24 24">
+      <circle cx="9" cy="8" r="2.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M3.8 18.5c0-3 2.3-5 5.2-5s5.2 2 5.2 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="17" cy="9.2" r="2.1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M14.8 18.5c.2-2.3 1.8-4 4-4 .5 0 1 .1 1.4.3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-notification" viewBox="0 0 24 24">
+      <path d="M12 3.5a5 5 0 0 0-5 5v3.2c0 .9-.3 1.7-.9 2.4l-1 1.2c-.5.6-.1 1.5.7 1.5h12.4c.8 0 1.2-.9.7-1.5l-1-1.2c-.6-.7-.9-1.5-.9-2.4V8.5a5 5 0 0 0-5-5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9.8 19.5a2.2 2.2 0 0 0 4.4 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-profile" viewBox="0 0 24 24">
+      <circle cx="12" cy="9" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M5.2 19.5c.7-3.6 3.4-6 6.8-6s6.1 2.4 6.8 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
     </symbol>
     <symbol id="ic-receipt" viewBox="0 0 24 24">
       <path d="M7 3h10v16l-1.7-1.1L13.6 19l-1.6-1.1L10.4 19l-1.7-1.1L7 19z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -58,9 +120,6 @@
       <path d="M11 20V8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
       <path d="M16.5 20v-9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
       <path d="M4.5 11l4-3.6 3.5 2.4 4.3-5.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 2.4"/>
-    </symbol>
-    <symbol id="ic-star" viewBox="0 0 24 24">
-      <path d="M12 3.5l2.4 5 5.5.6-4.1 3.8 1.1 5.4L12 15.8l-4.9 2.5 1.1-5.4-4.1-3.8 5.5-.6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
     <symbol id="ic-shield" viewBox="0 0 24 24">
       <path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -95,9 +154,9 @@
   <section class="hero">
     <div class="wrap">
       <div>
-        <span class="eyebrow">Personal finance, automated</span>
-        <h1>Your phone already<br>knows what you <em>spent</em>.</h1>
-        <p class="lede">FinTrack reads your bank and mobile banking alerts the moment they land, and quietly turns them into one clean, categorized ledger — no manual typing, no spreadsheets, no missed transactions.</p>
+        <span class="eyebrow">Your complete money manager</span>
+        <h1>Every account.<br>Every habit.<br><em>One</em> app.</h1>
+        <p class="lede">FinTrack brings your cash, bank accounts, and mobile wallets together in one place, then uses budgets, reminders, and AI insights — plus a little friendly competition — to help your money habits actually stick.</p>
         <div class="cta-row" id="download">
           <a class="btn btn-primary" aria-disabled="true" href="#download" onclick="event.preventDefault()">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -109,50 +168,50 @@
       </div>
 
       <div>
-        <div class="bloom-stage" role="img" aria-label="Six core FinTrack features arranged like the app icon: automatic SMS detection, receipt scanning, budgets, debt tracking, recurring bills, and reports.">
+        <div class="bloom-stage" role="img" aria-label="Six core FinTrack features arranged like the app icon: AI insights, reports, gamification, community, budgets, and multiple accounts.">
           <div class="bloom-hub" aria-hidden="true">৳</div>
-          <div class="petal p1" data-label="SMS detect" tabindex="0" aria-hidden="true"><svg><use href="#ic-sms"/></svg></div>
-          <div class="petal p2" data-label="Receipts" tabindex="0" aria-hidden="true"><svg><use href="#ic-receipt"/></svg></div>
-          <div class="petal p3" data-label="Reports" tabindex="0" aria-hidden="true"><svg><use href="#ic-report"/></svg></div>
-          <div class="petal p4" data-label="Recurring" tabindex="0" aria-hidden="true"><svg><use href="#ic-recur"/></svg></div>
-          <div class="petal p5" data-label="Debts" tabindex="0" aria-hidden="true"><svg><use href="#ic-exchange"/></svg></div>
-          <div class="petal p6" data-label="Budgets" tabindex="0" aria-hidden="true"><svg><use href="#ic-wallet"/></svg></div>
+          <div class="petal p1" data-label="AI Insights" tabindex="0" aria-hidden="true"><svg><use href="#ic-ai"/></svg></div>
+          <div class="petal p2" data-label="Reports" tabindex="0" aria-hidden="true"><svg><use href="#ic-report"/></svg></div>
+          <div class="petal p3" data-label="Gamification" tabindex="0" aria-hidden="true"><svg><use href="#ic-gamification"/></svg></div>
+          <div class="petal p4" data-label="Community" tabindex="0" aria-hidden="true"><svg><use href="#ic-community"/></svg></div>
+          <div class="petal p5" data-label="Budgets" tabindex="0" aria-hidden="true"><svg><use href="#ic-wallet"/></svg></div>
+          <div class="petal p6" data-label="Accounts" tabindex="0" aria-hidden="true"><svg><use href="#ic-accounts"/></svg></div>
         </div>
-        <p class="bloom-caption">Auto SMS · Receipts · Budgets · Debts · Recurring · Reports</p>
+        <p class="bloom-caption">Accounts · Budgets · AI Insights · Gamification · Community · Reports</p>
       </div>
     </div>
   </section>
 
-  <!-- FLOW: SMS to Ledger -->
+  <!-- FLOW: Accounts to Dashboard -->
   <section class="flow">
     <div class="wrap">
       <div class="flow-head">
-        <span class="eyebrow">From notification chaos to one ledger</span>
-        <h2>You don't log transactions.<br>Your alerts already did.</h2>
-        <p>Every bKash, Nagad, Rocket, or bank SMS that lands on your phone already states the amount, the balance, and the time. FinTrack reads that text on-device, the moment it arrives, and files it under the right category — before you've even opened the app.</p>
+        <span class="eyebrow">One dashboard, every account</span>
+        <h2>Stop checking five different<br>places for your money.</h2>
+        <p>Cash in hand, money in the bank, balance in your mobile wallet, what a friend owes you — FinTrack pulls every account you add into a single, always up-to-date picture, so you always know exactly where you stand.</p>
       </div>
 
       <div class="flow-diagram" data-reveal>
-        <div class="sms-card">
-          <div class="src">Mobile banking</div>
-          <div class="body">You have sent <span class="amt">Tk 450.00</span> to 017XXXXXXXX. Fee Tk 5.00. Balance Tk 6,230.50.</div>
+        <div class="acct-card">
+          <div class="src">Cash</div>
+          <div class="body">Wallet · <span class="amt">Tk 1,840.00</span></div>
         </div>
-        <div class="sms-card">
-          <div class="src">Bank alert</div>
-          <div class="body">Purchase of <span class="amt">BDT 1,250.00</span> at SUPERSHOP. Avl Bal BDT 8,430.00.</div>
+        <div class="acct-card">
+          <div class="src">Bank account</div>
+          <div class="body">City Bank ··4471 · <span class="amt">Tk 42,300.00</span></div>
         </div>
-        <div class="sms-card">
-          <div class="src">Mobile banking</div>
-          <div class="body">Cash Out <span class="amt">Tk 2,000.00</span> successful. Charge Tk 18.00. Balance Tk 4,212.50.</div>
+        <div class="acct-card">
+          <div class="src">Mobile wallet</div>
+          <div class="body">bKash · <span class="amt">Tk 3,120.00</span></div>
         </div>
       </div>
       <div class="arrow-down" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v15M6 14l6 6 6-6"/></svg>
       </div>
       <div class="ledger-row" data-reveal>
-        <span class="cat"><span class="dot"></span>Groceries &amp; Shopping</span>
-        <span class="amount">− ৳1,250.00</span>
-        <span class="time">Today, 2:14 PM</span>
+        <span class="cat"><span class="dot"></span>Total balance</span>
+        <span class="amount">৳47,260.00</span>
+        <span class="time">Updated just now</span>
       </div>
     </div>
   </section>
@@ -167,18 +226,18 @@
       <div class="steps-grid">
         <div class="step" data-reveal>
           <span class="num">01</span>
-          <h3>Grant SMS access</h3>
-          <p>One Android permission, granted once. Everything is read on your device — you can revoke it any time from system settings.</p>
+          <h3>Add your accounts</h3>
+          <p>Cash, bank, savings, mobile wallets — add as many as you track, each with its own running balance.</p>
         </div>
         <div class="step" data-reveal>
           <span class="num">02</span>
-          <h3>Auto-detect &amp; categorize</h3>
-          <p>Incoming bank and mobile-banking alerts are parsed instantly and sorted into spending categories you can edit anytime.</p>
+          <h3>Log as you go</h3>
+          <p>Manual entry takes seconds, or scan a paper receipt and FinTrack fills in the amount and date for you.</p>
         </div>
         <div class="step" data-reveal>
           <span class="num">03</span>
-          <h3>See one clear ledger</h3>
-          <p>Review the day, set budgets, track debts and recurring bills, and watch insights build themselves from real activity.</p>
+          <h3>Get insights, hit goals</h3>
+          <p>Budgets, debt payoff progress, and AI-generated insights turn raw entries into a clear picture — with streaks and rewards to keep you consistent.</p>
         </div>
       </div>
     </div>
@@ -191,57 +250,103 @@
         <span class="eyebrow">Everything in one app</span>
         <h2>Built for how money actually moves.</h2>
       </div>
-      <div class="grid8">
 
-        <div class="card" data-reveal>
-          <div class="icon-badge"><svg><use href="#ic-sms"/></svg></div>
-          <h3>Automatic SMS detection</h3>
-          <p>Bank and mobile-banking alerts become ledger entries the instant they arrive — no retyping.</p>
+      <h3 class="group-label">Track everything</h3>
+      <div class="grid8" data-reveal>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-accounts"/></svg></div>
+          <h3>Multiple accounts</h3>
+          <p>Track cash, bank accounts, and mobile wallets like bKash or Nagad side by side, each with its own balance.</p>
         </div>
-
-        <div class="card" data-reveal>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-category"/></svg></div>
+          <h3>Categories</h3>
+          <p>Organize every transaction into categories that actually match how you spend — or build your own.</p>
+        </div>
+        <div class="card">
           <div class="icon-badge"><svg><use href="#ic-receipt"/></svg></div>
           <h3>Receipt scanner</h3>
           <p>Snap a paper receipt and FinTrack reads the amount, merchant, and date for you.</p>
         </div>
-
-        <div class="card" data-reveal>
-          <div class="icon-badge"><svg><use href="#ic-wallet"/></svg></div>
-          <h3>Smart budgets</h3>
-          <p>Set a monthly limit per category and get nudged before you overspend, not after.</p>
-        </div>
-
-        <div class="card" data-reveal>
-          <div class="icon-badge"><svg><use href="#ic-exchange"/></svg></div>
-          <h3>Debt &amp; loan tracker</h3>
-          <p>Keep tabs on money you owe and money owed to you, with due-date reminders.</p>
-        </div>
-
-        <div class="card" data-reveal>
+        <div class="card">
           <div class="icon-badge"><svg><use href="#ic-recur"/></svg></div>
           <h3>Recurring bills</h3>
           <p>Rent, subscriptions, EMIs — scheduled once, tracked automatically every cycle.</p>
         </div>
-
-        <div class="card" data-reveal>
-          <div class="icon-badge"><svg><use href="#ic-report"/></svg></div>
-          <h3>Calendar &amp; reports</h3>
-          <p>A day-by-day calendar of spending, plus charts that show exactly where money goes.</p>
-        </div>
-
-        <div class="card" data-reveal>
-          <div class="icon-badge"><svg><use href="#ic-star"/></svg></div>
-          <h3>Streaks &amp; rewards</h3>
-          <p>Log consistently and earn points for sticking with your budget, day after day.</p>
-        </div>
-
-        <div class="card" data-reveal>
-          <div class="icon-badge"><svg><use href="#ic-shield"/></svg></div>
-          <h3>Bank-grade privacy</h3>
-          <p>Biometric lock, encrypted local storage, and a sealed data space per account.</p>
-        </div>
-
       </div>
+
+      <h3 class="group-label">Plan &amp; stay on top</h3>
+      <div class="grid8" data-reveal>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-wallet"/></svg></div>
+          <h3>Budgets</h3>
+          <p>Set a monthly limit per category and get nudged before you overspend, not after.</p>
+        </div>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-exchange"/></svg></div>
+          <h3>Debt &amp; credit tracker</h3>
+          <p>Keep tabs on money you owe and money owed to you, with due-date reminders.</p>
+        </div>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-calendar"/></svg></div>
+          <h3>Calendar</h3>
+          <p>A day-by-day calendar view of every transaction, bill, and reminder.</p>
+        </div>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-todo"/></svg></div>
+          <h3>To-do lists</h3>
+          <p>Keep money-related tasks — pay rent, renew insurance — right alongside the budget they affect.</p>
+        </div>
+      </div>
+
+      <h3 class="group-label">Understand the bigger picture</h3>
+      <div class="grid8" data-reveal>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-ai"/></svg></div>
+          <h3>AI insights</h3>
+          <p>Each month, an AI-generated insight compares your spending, saving, and category trends — built from a private summary of your activity, never your raw transactions.</p>
+        </div>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-report"/></svg></div>
+          <h3>Reports — PDF &amp; Excel</h3>
+          <p>Export clean, shareable reports of your spending — ready for a spreadsheet or a printout.</p>
+        </div>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-cloud"/></svg></div>
+          <h3>Cloud backup</h3>
+          <p>Your ledger backs up automatically, so a lost or swapped phone never means lost data.</p>
+        </div>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-reminder"/></svg></div>
+          <h3>Reminders</h3>
+          <p>Never miss a bill, a debt due date, or a budget check-in again.</p>
+        </div>
+      </div>
+
+      <h3 class="group-label">Stay motivated</h3>
+      <div class="grid8" data-reveal>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-gamification"/></svg></div>
+          <h3>Gamification &amp; levels</h3>
+          <p>Earn levels and streaks for logging consistently and sticking to your budget.</p>
+        </div>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-reward"/></svg></div>
+          <h3>Rewards</h3>
+          <p>Unlock rewards as you hit savings milestones and build good financial habits.</p>
+        </div>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-community"/></svg></div>
+          <h3>Community</h3>
+          <p>Compare progress, share wins, and stay accountable with friends inside the app.</p>
+        </div>
+        <div class="card">
+          <div class="icon-badge"><svg><use href="#ic-notification"/></svg></div>
+          <h3>Notifications</h3>
+          <p>Timely nudges for budgets, bills, and reminders — tuned to matter, not nag.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -273,10 +378,17 @@
           </div>
         </div>
         <div class="trust-item" data-reveal>
-          <span class="mark"><svg><use href="#ic-sms"/></svg></span>
+          <span class="mark"><svg><use href="#ic-profile"/></svg></span>
           <div>
-            <h4>SMS stays on your device</h4>
-            <p>Messages are read on-device only to detect transactions — the raw text is never uploaded or shared.</p>
+            <h4>Your profile stays private</h4>
+            <p>Your name, photo, and personal details are private by default. In Community, you choose what to share — your numbers are never shown unless you choose to share them.</p>
+          </div>
+        </div>
+        <div class="trust-item" data-reveal>
+          <span class="mark"><svg><use href="#ic-ai"/></svg></span>
+          <div>
+            <h4>AI insights see a summary, not your data</h4>
+            <p>Only an aggregated monthly summary — income, expenses, savings, category percentages — is ever analyzed. No individual transaction, merchant name, or account number leaves your account, and no third-party AI company is involved.</p>
           </div>
         </div>
       </div>
@@ -286,9 +398,9 @@
   <!-- CLOSING -->
   <section class="closing">
     <div class="wrap">
-      <span class="eyebrow">Built for Bangladesh</span>
-      <h2>Built for how Bangladesh actually banks.</h2>
-      <p>bKash, Nagad, Rocket, and bank SMS — supported alongside full manual entry. Free to start, with an optional premium tier for power users.</p>
+      <span class="eyebrow">Built for Bangladesh, ready for anyone</span>
+      <h2>Built for how Bangladesh actually saves.</h2>
+      <p>Track cash, bank accounts, and mobile wallets like bKash, Nagad, and Rocket side by side. Budget in taka, split debts with friends and family, and stay motivated with streaks and a bit of friendly competition. Free to start, with an optional premium tier for power users.</p>
       <div class="cta-row">
         <a class="btn btn-primary" aria-disabled="true" href="#download" onclick="event.preventDefault()">Coming soon on Google Play</a>
         <a class="btn btn-ghost" href="privacy.html">Privacy Policy</a>
@@ -305,7 +417,7 @@
         <img src="assets/favicon.png" alt="" width="32" height="32">
         FinTrack
       </a>
-      <p class="tag">A smart finance manager built around how Bangladesh actually banks — automatic, private, and yours.</p>
+      <p class="tag">A smart finance manager built for every account, habit, and goal — organized, motivating, and yours.</p>
     </div>
     <div class="footer-links">
       <div class="footer-col">

@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — FinTrack</title>
-<meta name="description" content="How FinTrack collects, uses, and protects your data, including SMS-based transaction detection, camera, and biometric permissions.">
+<meta name="description" content="How FinTrack collects, uses, and protects your data, including account, camera, AI insight, and biometric permissions.">
+<meta property="og:title" content="Privacy Policy — FinTrack">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,6 +51,7 @@
       <a href="#intro">Introduction</a>
       <a href="#collect">Information we collect</a>
       <a href="#use">How we use it</a>
+      <a href="#ai-insights">How AI insights work</a>
       <a href="#permissions">Permissions we request</a>
       <a href="#storage">Storage &amp; security</a>
       <a href="#deletion">Account &amp; data deletion</a>
@@ -72,37 +74,50 @@
       <p>FinTrack ("FinTrack", "we", "our", "us") is a personal finance app for Android, developed under the package <span class="placeholder">com.fintrack.app</span>. This policy explains what information the app accesses, why, and how it is stored. It applies to anyone who installs or uses FinTrack.</p>
       <p>FinTrack is built around a simple idea: your financial data should help only you. Wherever possible, information is processed on your device rather than sent anywhere.</p>
       <p>We process personal data on the basis of your consent, the performance of our agreement with you, and our legitimate interest in providing the app's core features. FinTrack is operated from Bangladesh and used in Bangladesh and elsewhere, so this policy is written to apply globally, while also honoring specific rights granted under frameworks such as the EU/UK General Data Protection Regulation (GDPR), the California Consumer Privacy Act (CCPA/CPRA), and Bangladesh's Personal Data Protection Ordinance, 2025 — summarized in <a href="#regional">Regional disclosures</a>.</p>
-      <div class="callout">By creating an account or enabling a feature that requires a permission (such as SMS access or the camera), you consent to the related data use described in this policy. You can withdraw that consent at any time by disabling the permission or deleting your account — see <a href="#deletion">Account &amp; data deletion</a>.</div>
+      <div class="callout">By creating an account or enabling a feature that requires a permission (such as the camera or notifications), you consent to the related data use described in this policy. You can withdraw that consent at any time by disabling the permission or deleting your account — see <a href="#deletion">Account &amp; data deletion</a>.</div>
 
       <h2 id="collect">Information we collect</h2>
       <p>FinTrack collects only what it needs to run your ledger. We treat your financial data as sensitive information and apply additional care in how it is stored, accessed, and shared:</p>
       <ul>
         <li><strong>Account information</strong> — your name, email address, and profile photo, when you sign in with Google or create an account, via Firebase Authentication.</li>
-        <li><strong>Financial data you create</strong> — transactions, budgets, categories, debts, recurring bills, and notes, whether entered manually, detected from SMS, or scanned from a receipt.</li>
-        <li><strong>SMS content</strong> — read on-device to detect bank and mobile-banking transaction alerts. FinTrack extracts the amount, date, and merchant/sender pattern needed to create a ledger entry; it does not upload or store the raw message text.</li>
+        <li><strong>Multiple accounts</strong> — the names, types (such as cash, bank, or mobile wallet), and balances for each account you set up to track.</li>
+        <li><strong>Financial data you create</strong> — transactions, budgets, categories, debts, recurring bills, to-do items, and notes, whether entered manually or scanned from a receipt.</li>
         <li><strong>Camera and photos</strong> — receipt images you choose to scan or photos you choose to attach, processed to extract amounts and dates.</li>
         <li><strong>Voice input</strong> — audio captured only while you actively use voice entry to add a transaction by speaking; it is converted to text on-device and not retained as an audio file.</li>
         <li><strong>Biometric data</strong> — handled entirely by your device's operating system to unlock the app. FinTrack never receives or stores your fingerprint or face data.</li>
-        <li><strong>Gamification data</strong> — points, streaks, and reward progress generated from your in-app activity.</li>
+        <li><strong>AI insight summary data</strong> — once a month, an aggregated summary of your activity (such as total income, total expenses, savings amount, and the percentage of spending in each category) is generated and stored, as described in <a href="#ai-insights">How AI insights work</a> below. This summary never includes your individual transactions, merchant names, account numbers, or notes.</li>
+        <li><strong>Community activity</strong> — your display name and any posts, comments, or progress you choose to share are visible to other users inside the Community feature.</li>
+        <li><strong>Gamification &amp; reward data</strong> — points, streaks, levels, and reward progress generated from your in-app activity.</li>
         <li><strong>Device &amp; diagnostic data</strong> — basic technical information (device model, OS version, crash logs) used to keep the app stable.</li>
       </ul>
 
       <h2 id="use">How we use your information</h2>
       <ul>
-        <li>To create and maintain your transaction ledger, budgets, debts, and recurring bills.</li>
-        <li>To sync your data securely across your own devices when you're signed in.</li>
+        <li>To create and maintain your accounts, transaction ledger, budgets, debts, recurring bills, and to-do items.</li>
+        <li>To sync your data securely across your own devices when you're signed in, and back it up to the cloud.</li>
+        <li>To generate your monthly AI insight by analyzing an aggregated summary of your activity — see <a href="#ai-insights">How AI insights work</a> for exactly what this involves.</li>
         <li>To send budget alerts, bill reminders, and reward notifications you've enabled.</li>
+        <li>To power Community features, such as displaying your name and shared progress to other users.</li>
         <li>To detect and prevent fraud, abuse, or technical issues.</li>
         <li>To improve app stability and performance.</li>
       </ul>
-      <div class="callout">FinTrack does not use your financial data, SMS content, or receipt images to build an advertising profile, and does not sell this data to anyone.</div>
+      <div class="callout">FinTrack does not use your financial data or receipt images to build an advertising profile, and does not sell this data to anyone.</div>
+
+      <h2 id="ai-insights">How AI insights work</h2>
+      <p>AI Insights are designed to share as little of your data as possible while still giving you something genuinely useful. Here is exactly what happens, step by step:</p>
+      <ul>
+        <li><strong>1. We summarize, not export.</strong> Once a month, your activity is reduced to a single aggregated summary — total income, total expenses, total savings, and the percentage of spending in each category. Your individual transactions, merchant names, account numbers, and notes are never part of this summary.</li>
+        <li><strong>2. The summary is stored.</strong> That monthly summary (not your full data) is saved to our Cloud Firestore database, under your account, with the same per-account isolation described in <a href="#storage">Storage &amp; security</a> below.</li>
+        <li><strong>3. It's processed by us — not a third-party AI company.</strong> The summary is read and analyzed by a language model that we run ourselves, on our own infrastructure. It is not sent to OpenAI, Google Gemini, Anthropic, or any other external AI provider. The model compares your current month's summary against your own past summaries to spot trends — for example, a category where spending is rising, or a stronger savings rate than usual.</li>
+        <li><strong>4. The insight is saved back to your account.</strong> The resulting written insight is saved to Firestore under your account and shown to you in the app, alongside your own detailed data, so you can see exactly what it's based on.</li>
+      </ul>
+      <div class="callout">No advertiser, data broker, or external AI vendor ever receives your summarized financial data through this feature — it is processed entirely within systems we operate ourselves.</div>
 
       <h2 id="permissions">Permissions we request</h2>
       <p>Android requires apps to declare each permission up front. Here is what FinTrack asks for and why:</p>
       <table>
         <thead><tr><th>Permission</th><th>Why FinTrack needs it</th></tr></thead>
         <tbody>
-          <tr><td class="mono">READ_SMS / RECEIVE_SMS</td><td>Detect and auto-categorize transactions from bank and mobile-banking alerts.</td></tr>
           <tr><td class="mono">CAMERA</td><td>Scan paper receipts and, optionally, set a profile photo.</td></tr>
           <tr><td class="mono">READ_MEDIA_IMAGES / VIDEO / AUDIO</td><td>Attach existing photos, such as a saved receipt, from your gallery.</td></tr>
           <tr><td class="mono">RECORD_AUDIO</td><td>Add a transaction by speaking, using on-device speech-to-text.</td></tr>
@@ -136,11 +151,12 @@
       <h2 id="third-party">Third-party services</h2>
       <p>FinTrack relies on a small set of trusted providers to operate:</p>
       <ul>
-        <li><strong>Google Firebase</strong> (Authentication, Cloud Firestore, Cloud Messaging) — account sign-in, data sync, and push notifications.</li>
+        <li><strong>Google Firebase</strong> (Authentication, Cloud Firestore, Cloud Messaging) — account sign-in, data sync, cloud backup, and push notifications.</li>
         <li><strong>Google Sign-In</strong> — optional one-tap sign-in using your Google account.</li>
         <li><strong>Google AdMob</strong> — displays ads that help keep the free tier of FinTrack running.</li>
         <li><strong>Google Play Billing</strong> — processes premium subscription purchases; FinTrack never sees your card details.</li>
       </ul>
+      <p>AI Insights are a notable exception to third-party processing: they are generated by a language model we operate ourselves, not by an external AI company — see <a href="#ai-insights">How AI insights work</a> for details.</p>
       <p>Each provider processes data under its own privacy terms in addition to this policy.</p>
 
       <h2 id="transfers">International data transfers</h2>
@@ -165,7 +181,7 @@
         <li><strong>Access</strong> the personal data we hold about you.</li>
         <li><strong>Correct</strong> inaccurate or outdated information, most of which you can edit directly in the app.</li>
         <li><strong>Delete</strong> your account and associated data at any time — see <a href="#deletion">Account &amp; data deletion</a>.</li>
-        <li><strong>Restrict or object</strong> to specific processing, such as turning off SMS-based detection, voice entry, or ad personalization, while continuing to use the rest of the app.</li>
+        <li><strong>Restrict or object</strong> to specific processing, such as turning off voice entry, AI insights, or ad personalization, while continuing to use the rest of the app.</li>
         <li><strong>Withdraw consent</strong> for any permission-based feature at any time from Android Settings, without losing access to your previously saved data.</li>
         <li><strong>Request a copy</strong> of your data in a portable format by contacting us.</li>
       </ul>
@@ -176,7 +192,7 @@
 
       <h3>European Economic Area &amp; United Kingdom (GDPR / UK GDPR)</h3>
       <ul>
-        <li>Our legal basis for processing is, depending on the feature: your <strong>consent</strong> (for permission-gated features like SMS access, camera, or voice entry), the <strong>performance of our contract</strong> with you (for core ledger and sync features), and our <strong>legitimate interest</strong> (for security, fraud prevention, and service improvement).</li>
+        <li>Our legal basis for processing is, depending on the feature: your <strong>consent</strong> (for permission-gated features like the camera or voice entry), the <strong>performance of our contract</strong> with you (for core ledger and sync features), and our <strong>legitimate interest</strong> (for security, fraud prevention, and service improvement).</li>
         <li>You have the rights to access, rectification, erasure, restriction, portability, and to object to processing, as well as the right to withdraw consent at any time without affecting processing already carried out.</li>
         <li>You have the right to lodge a complaint with your local data protection supervisory authority.</li>
       </ul>
@@ -215,7 +231,7 @@
         <img src="assets/favicon.png" alt="" width="32" height="32">
         FinTrack
       </a>
-      <p class="tag">A smart finance manager built around how Bangladesh actually banks.</p>
+      <p class="tag">A smart finance manager built for every account, habit, and goal — organized, motivating, and yours.</p>
     </div>
     <div class="footer-links">
       <div class="footer-col">
