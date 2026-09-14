@@ -31,10 +31,10 @@ fintrack-site/
 - **Hero section:** "Every account. Every habit. One app." — অ্যানিমেটেড bloom ইলাস্ট্রেশন সহ
 - **Accounts flow:** মাল্টি-অ্যাকাউন্ট → সিঙ্গেল ড্যাশবোর্ড ভিজ্যুয়াল (Cash, Bank, bKash)
 - **How it works:** ৩-step explainer (অ্যাকাউন্ট যোগ → লগ → Insights)
-- **Features grid:** ১৬টি ফিচার ৪টি গ্রুপে সাজানো:
+- **Features grid:** ১৭টি ফিচার ৪টি গ্রুপে সাজানো:
   - *Track everything:* Multiple accounts, Categories, Receipt scanner, Recurring bills
   - *Plan & stay on top:* Budgets, Debt & credit tracker, Calendar, To-do lists
-  - *Understand the bigger picture:* AI insights, Reports (PDF & Excel), Cloud backup, Reminders
+  - *Understand the bigger picture:* AI insights, Net worth, Reports (PDF & Excel), Cloud backup, Reminders
   - *Stay motivated:* Gamification & levels, Rewards, Community, Notifications
 - **Trust band:** ৫টি privacy/security trust point (AI insight আর্কিটেকচারের ব্যাখ্যা সহ)
 - **Closing CTA:** "Built for how Bangladesh actually saves"
@@ -204,10 +204,6 @@ firebase init hosting
 
 ```bash
 firebase deploy --only hosting
-```
-| for deploy to fintrack-lab.web.app
-```bash
-firebase deploy --only hosting:fintrack-lab
 ```
 
 সফল হলে দেখাবে:
