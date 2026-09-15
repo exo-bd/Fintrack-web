@@ -276,7 +276,7 @@ firebase deploy --only hosting
 ## গুরুত্বপূর্ণ নোট
 
 - **Firebase project ID পরিবর্তন করা যায় না** — একবার set হলে চিরস্থায়ী। Clean URL চাইলে Custom domain ব্যবহার করুন।
-- **নতুন Firebase project লাগবে না** — Firebase Hosting বিদ্যমান FinTrack project-এর ভেতরেই চলে। এই সাইজের static site-এর জন্য কোনো অতিরিক্ত খরচ নেই।
+- **নতুন Firebase project লাগবে না** — Firebase Hosting বিদ্যমান FinTrack project-এর ভেতরেই চলে। এই সাইজের static site-এর জন্য কোনো অতিরিক্ত খরচ নেই। App টি বিশ্বব্যাপী (worldwide) launch হচ্ছে ০১ অক্টোবর ২০২৬ তারিখে।
 - **AI Insights privacy:** শুধু monthly aggregated summary (আয়, ব্যয়, সঞ্চয়, ক্যাটাগরি %) store ও process হয় — কখনো raw transaction নয়। LLM ডেভেলপারের নিজের local machine-এ চলে, কোনো third-party AI service নয়।
 - **Data retention:** অ্যাকাউন্ট active থাকা পর্যন্ত সব user data indefinitely রাখা হয়। অ্যাকাউন্ট ডিলিটের verified request পাওয়ার ৭ business দিনের মধ্যে স্থায়ীভাবে মুছে যাবে।
 - **Legal pages কার্যকর তারিখ:** ০১ অক্টোবর, ২০২৬

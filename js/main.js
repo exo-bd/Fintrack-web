@@ -55,6 +55,55 @@
     setActive();
   }
 
+  // ── Countdown timer ──────────────────────────────────────────────────────
+  var LAUNCH = new Date('2026-10-01T00:00:00Z').getTime(); // UTC midnight
+
+  var cdDays  = document.getElementById('cd-days');
+  var cdHours = document.getElementById('cd-hours');
+  var cdMins  = document.getElementById('cd-mins');
+  var cdSecs  = document.getElementById('cd-secs');
+  var cdWrap  = document.getElementById('countdown');
+  var cdDone  = document.getElementById('cd-launched');
+
+  function pad(n){ return n < 10 ? '0' + n : String(n); }
+
+  function tickNum(el, newVal){
+    if (!el) return;
+    if (el.textContent !== newVal){
+      el.classList.add('tick');
+      el.textContent = newVal;
+      setTimeout(function(){ el.classList.remove('tick'); }, 150);
+    }
+  }
+
+  function updateCountdown(){
+    var now  = Date.now();
+    var diff = LAUNCH - now;
+
+    if (diff <= 0){
+      // Launch day — hide countdown, show "live" message
+      if (cdWrap)  cdWrap.style.display  = 'none';
+      if (cdDone){ cdDone.style.display  = 'flex'; }
+      return;
+    }
+
+    var days  = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var mins  = Math.floor((diff % 3600000)  / 60000);
+    var secs  = Math.floor((diff % 60000)    / 1000);
+
+    tickNum(cdDays,  String(days));
+    tickNum(cdHours, pad(hours));
+    tickNum(cdMins,  pad(mins));
+    tickNum(cdSecs,  pad(secs));
+  }
+
+  if (cdDays){ // only run on index page where countdown exists
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
   // Footer year
   var yearEl = document.querySelector('[data-year]');
   if (yearEl){ yearEl.textContent = new Date().getFullYear(); }
