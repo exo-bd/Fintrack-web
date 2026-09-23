@@ -56,7 +56,7 @@
   }
 
   // ── Countdown timer ──────────────────────────────────────────────────────
-  var LAUNCH = new Date('2026-10-01T00:00:00Z').getTime(); // UTC midnight
+  var LAUNCH = new Date('2026-11-01T00:00:00Z').getTime(); // UTC midnight
 
   var cdDays  = document.getElementById('cd-days');
   var cdHours = document.getElementById('cd-hours');
