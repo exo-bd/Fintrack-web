@@ -209,17 +209,48 @@
         <p class="pill-note">FinTrack launches worldwide on Google Play on 01 November 2026. This page also serves as the app's official Play Store listing &amp; privacy reference.</p>
       </div>
 
-      <div>
-        <div class="bloom-stage" role="img" aria-label="Six core FinTrack features arranged like the app icon: AI insights, reports, gamification, community, budgets, and multiple accounts.">
+      <div class="bloom-wrap">
+        <div class="bloom-stage" id="bloomStage" role="img" aria-label="Six core FinTrack features: AI Insights, Reports, Gamification, Community, Budgets, and Accounts.">
+          <div class="bloom-orbit" aria-hidden="true"></div>
           <div class="bloom-hub" aria-hidden="true">$€₹</div>
-          <div class="petal p1" data-label="AI Insights" tabindex="0" aria-hidden="true"><svg><use href="#ic-ai"/></svg></div>
-          <div class="petal p2" data-label="Reports" tabindex="0" aria-hidden="true"><svg><use href="#ic-report"/></svg></div>
-          <div class="petal p3" data-label="Gamification" tabindex="0" aria-hidden="true"><svg><use href="#ic-gamification"/></svg></div>
-          <div class="petal p4" data-label="Community" tabindex="0" aria-hidden="true"><svg><use href="#ic-community"/></svg></div>
-          <div class="petal p5" data-label="Budgets" tabindex="0" aria-hidden="true"><svg><use href="#ic-wallet"/></svg></div>
-          <div class="petal p6" data-label="Accounts" tabindex="0" aria-hidden="true"><svg><use href="#ic-accounts"/></svg></div>
+          <div class="petal p1" tabindex="0" role="button"
+               data-label="AI Insights"
+               data-desc="Monthly AI analysis of your spending, savings &amp; category trends — private, built on your own data.">
+            <svg><use href="#ic-ai"/></svg>
+          </div>
+          <div class="petal p2" tabindex="0" role="button"
+               data-label="Reports"
+               data-desc="Export clean PDF or Excel reports of your spending anytime you need them.">
+            <svg><use href="#ic-report"/></svg>
+          </div>
+          <div class="petal p3" tabindex="0" role="button"
+               data-label="Gamification"
+               data-desc="Earn levels and streaks for logging consistently and sticking to your budget.">
+            <svg><use href="#ic-gamification"/></svg>
+          </div>
+          <div class="petal p4" tabindex="0" role="button"
+               data-label="Community"
+               data-desc="Compare progress, share wins, and stay accountable with friends inside the app.">
+            <svg><use href="#ic-community"/></svg>
+          </div>
+          <div class="petal p5" tabindex="0" role="button"
+               data-label="Budgets"
+               data-desc="Set a monthly limit per category and get nudged before you overspend, not after.">
+            <svg><use href="#ic-wallet"/></svg>
+          </div>
+          <div class="petal p6" tabindex="0" role="button"
+               data-label="Accounts"
+               data-desc="Track cash, bank accounts, and mobile wallets side by side — any currency, anywhere.">
+            <svg><use href="#ic-accounts"/></svg>
+          </div>
         </div>
-        <p class="bloom-caption">Accounts · Budgets · AI Insights · Gamification · Community · Reports</p>
+
+        <div class="bloom-info" aria-live="polite">
+          <div class="bloom-info-inner" id="bloomInfo">
+            <span class="bloom-info-name" id="bloomInfoName"></span>
+            <span class="bloom-info-desc" id="bloomInfoDesc"></span>
+          </div>
+        </div>
       </div>
     </div>
   </section>

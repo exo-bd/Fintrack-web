@@ -55,6 +55,73 @@
     setActive();
   }
 
+  // ── Bloom interactions ────────────────────────────────────────────────────
+  var stage    = document.getElementById('bloomStage');
+  var infoBox  = document.getElementById('bloomInfo');
+  var infoName = document.getElementById('bloomInfoName');
+  var infoDesc = document.getElementById('bloomInfoDesc');
+
+  if (stage && infoBox){
+    var petals = stage.querySelectorAll('.petal');
+    var hideTimer;
+
+    function showInfo(petal){
+      clearTimeout(hideTimer);
+      infoName.textContent = petal.getAttribute('data-label') || '';
+      infoDesc.innerHTML   = petal.getAttribute('data-desc')  || '';
+      infoBox.classList.add('visible');
+    }
+
+    function hideInfo(){
+      hideTimer = setTimeout(function(){
+        infoBox.classList.remove('visible');
+      }, 200);
+    }
+
+    petals.forEach(function(p){
+      // Mouse
+      p.addEventListener('mouseenter', function(){ showInfo(p); });
+      p.addEventListener('mouseleave', hideInfo);
+      // Touch
+      p.addEventListener('touchstart', function(e){
+        e.preventDefault();
+        petals.forEach(function(x){ x.classList.remove('is-active'); });
+        p.classList.add('is-active');
+        showInfo(p);
+      }, { passive: false });
+      // Keyboard
+      p.addEventListener('focus',   function(){ showInfo(p); });
+      p.addEventListener('blur',    hideInfo);
+      p.addEventListener('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); showInfo(p); }
+      });
+    });
+
+    // ── Mouse tilt (3-D perspective effect) ────────────────────────────────
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var isMobile     = window.matchMedia('(max-width: 880px)').matches;
+
+    if (!reduceMotion && !isMobile){
+      stage.addEventListener('mousemove', function(e){
+        var r   = stage.getBoundingClientRect();
+        var cx  = r.left + r.width  / 2;
+        var cy  = r.top  + r.height / 2;
+        var dx  = (e.clientX - cx) / (r.width  / 2); // -1 to +1
+        var dy  = (e.clientY - cy) / (r.height / 2);
+        var tx  =  dy * -9;  // tilt up/down (inverted)
+        var ty  =  dx *  9;  // tilt left/right
+        stage.style.transform = 'perspective(700px) rotateX('+tx+'deg) rotateY('+ty+'deg)';
+      });
+
+      stage.addEventListener('mouseleave', function(){
+        stage.style.transition = 'transform .5s cubic-bezier(.2,.8,.2,1)';
+        stage.style.transform  = 'perspective(700px) rotateX(0deg) rotateY(0deg)';
+        setTimeout(function(){ stage.style.transition = 'transform .08s ease-out'; }, 520);
+      });
+    }
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
   // ── Countdown timer ──────────────────────────────────────────────────────
   var LAUNCH = new Date('2026-11-01T00:00:00Z').getTime(); // UTC midnight
 
