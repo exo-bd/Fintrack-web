@@ -636,3 +636,142 @@ h1,h2,h3{ font-family:var(--font-display); margin:0; letter-spacing:-.02em; }
 .copy-btn:hover{ box-shadow:0 0 26px rgba(124,58,255,0.65); transform:translateY(-1px); }
 .copy-btn svg{ width:15px; height:15px; }
 .copy-btn[data-copied="true"]{ background:linear-gradient(135deg,#1F8A52,#00D4A0); box-shadow:none; }
+
+/* ==========================================================================
+   Charts preview section
+   ========================================================================== */
+.charts{
+  padding:90px 0;
+  background:linear-gradient(180deg, var(--bg-2), var(--bg));
+  border-top:1px solid var(--border);
+}
+.grad-text{
+  font-style:normal;
+  background:linear-gradient(120deg, #fff 0%, var(--purple-2) 45%, var(--cyan) 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.charts-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:20px;
+}
+
+/* Chart card */
+.chart-card{
+  background:var(--bg-glass); border:1px solid var(--border);
+  border-top:2px solid var(--purple);
+  border-radius:20px; padding:24px 22px;
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  transition:border-color .3s ease, box-shadow .3s ease;
+}
+.chart-card:hover{
+  border-color:rgba(124,58,255,0.5);
+  box-shadow:0 0 30px rgba(124,58,255,0.14), 0 12px 30px rgba(0,0,0,.4);
+}
+.chart-header{
+  display:flex; justify-content:space-between; align-items:center; margin-bottom:18px;
+}
+.chart-title{
+  font-family:var(--font-display); font-weight:600; font-size:14.5px;
+}
+.chart-period{
+  font-family:var(--font-mono); font-size:11px; color:var(--text-3); letter-spacing:.04em;
+}
+.chart-period.grow{ color:#00FFB3; font-weight:600; }
+
+/* ── Donut ── */
+.donut-wrap{
+  position:relative; display:flex; align-items:center; justify-content:center;
+  width:140px; height:140px; margin:0 auto 16px;
+}
+.donut-svg{ position:absolute; width:140px; height:140px; }
+.donut-bg{ fill:none; stroke:rgba(255,255,255,0.05); stroke-width:18; }
+.donut-seg{
+  fill:none; stroke-width:18; stroke-linecap:butt;
+  stroke-dasharray:0 326.73;
+  transition:stroke-dasharray 1.1s cubic-bezier(.4,0,.2,1);
+}
+.d1{ stroke:#7C3AFF; }
+.d2{ stroke:#00D4FF; }
+.d3{ stroke:#FFB547; }
+.d4{ stroke:#00FFB3; }
+.d5{ stroke:#4A5374; }
+.donut-center{ position:relative; z-index:1; text-align:center; }
+.donut-amount{
+  display:block; font-family:var(--font-mono); font-size:17px; font-weight:700;
+  background:linear-gradient(135deg, var(--purple-2), var(--cyan));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.donut-lbl{ display:block; font-size:10px; color:var(--text-3); margin-top:2px; font-family:var(--font-mono); }
+.donut-legend{ display:flex; flex-direction:column; gap:7px; }
+.dleg{ display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--text-2); }
+.ldot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.ld1{ background:#7C3AFF; } .ld2{ background:#00D4FF; }
+.ld3{ background:#FFB547; } .ld4{ background:#00FFB3; }
+.ld5{ background:#4A5374; }
+.lpct{ margin-left:auto; font-family:var(--font-mono); font-size:11px; color:var(--text-3); }
+
+/* ── Line chart ── */
+.line-wrap{ margin:0 -4px 12px; }
+.line-svg{ width:100%; height:110px; overflow:visible; }
+.c-area{ opacity:0; transition:opacity 1.4s ease; }
+.income-area{ fill:url(#grad-income); fill:rgba(0,212,255,0.12); }
+.expense-area{ fill:rgba(124,58,255,0.12); }
+.c-line{
+  fill:none; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:0 1000;
+  transition:stroke-dasharray 1.4s cubic-bezier(.4,0,.2,1);
+}
+.income-line{ stroke:#00D4FF; filter:drop-shadow(0 0 4px rgba(0,212,255,0.6)); }
+.expense-line{ stroke:#7C3AFF; filter:drop-shadow(0 0 4px rgba(124,58,255,0.6)); }
+.lx-labels{
+  display:flex; justify-content:space-between;
+  font-family:var(--font-mono); font-size:10px; color:var(--text-3); margin-top:8px;
+}
+.ll-legend{ display:flex; gap:20px; }
+.ll-dot{ display:inline-block; width:22px; height:2.5px; border-radius:2px; margin-right:6px; vertical-align:middle; }
+
+/* ── Budget bars ── */
+.blist{ display:flex; flex-direction:column; gap:13px; }
+.brow{ display:flex; justify-content:space-between; font-size:13px; color:var(--text-2); margin-bottom:5px; }
+.bpct{ font-family:var(--font-mono); font-size:11.5px; color:var(--text-3); }
+.bpct.warn{ color:#FFB547; }
+.bbar{ height:6px; background:rgba(255,255,255,0.06); border-radius:999px; overflow:hidden; }
+.bfill{
+  height:100%; width:0; border-radius:999px; background:var(--col);
+  transition:width 1.1s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 0 8px color-mix(in srgb, var(--col) 40%, transparent);
+}
+.bfill.warn{ box-shadow:0 0 10px rgba(255,181,71,0.5); }
+
+/* ── Net worth bars ── */
+.nw-wrap{ margin:8px 0; }
+.nw-chart{
+  display:flex; align-items:flex-end; gap:8px; height:90px;
+}
+.nw-col{ flex:1; display:flex; align-items:flex-end; height:100%; }
+.nw-bar{
+  width:100%; height:0; border-radius:6px 6px 0 0;
+  background:linear-gradient(180deg, rgba(124,58,255,0.55), rgba(124,58,255,0.18));
+  border:1px solid rgba(124,58,255,0.25);
+  transition:height 1s cubic-bezier(.4,0,.2,1);
+}
+.nw-bar-active{
+  background:linear-gradient(180deg, #7C3AFF, rgba(0,212,255,0.5));
+  border-color:rgba(0,212,255,0.5);
+  box-shadow:0 0 20px rgba(124,58,255,0.45), 0 0 40px rgba(0,212,255,0.15);
+}
+.nw-x{
+  display:flex; justify-content:space-around; margin-top:8px;
+  font-family:var(--font-mono); font-size:10px; color:var(--text-3);
+}
+.nw-vals{
+  display:flex; justify-content:space-between; margin-top:10px;
+  font-family:var(--font-mono); font-size:11px; color:var(--text-3);
+}
+.nw-now{ color:var(--cyan); }
+.nw-now small{ color:var(--text-3); font-size:10px; }
+
+@media(max-width:760px){
+  .charts-grid{ grid-template-columns:1fr; }
+  .donut-wrap{ width:120px; height:120px; }
+  .donut-svg{ width:120px; height:120px; }
+}

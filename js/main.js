@@ -55,6 +55,57 @@
     setActive();
   }
 
+  // ── Chart animations ──────────────────────────────────────────────────────
+  var chartCards = document.querySelectorAll('[data-chart]');
+  if (chartCards.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var chartObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting) return;
+        var card = entry.target;
+        var type = card.getAttribute('data-chart');
+
+        if (type === 'donut'){
+          // Animate each segment from 0 to its final dasharray
+          card.querySelectorAll('.donut-seg').forEach(function(seg){
+            seg.style.strokeDasharray = seg.getAttribute('data-da');
+          });
+          // Fade in areas
+          card.querySelectorAll('.c-area').forEach(function(a){ a.style.opacity='0.12'; });
+        }
+
+        if (type === 'line'){
+          setTimeout(function(){
+            card.querySelectorAll('.c-line').forEach(function(line){
+              line.style.strokeDasharray = '1000 0';
+            });
+            card.querySelectorAll('.c-area').forEach(function(a){ a.style.opacity='1'; });
+          }, 100);
+        }
+
+        if (type === 'budget'){
+          card.querySelectorAll('.bfill').forEach(function(fill, i){
+            setTimeout(function(){
+              fill.style.width = 'calc(var(--pct))';
+            }, i * 120);
+          });
+        }
+
+        if (type === 'bar'){
+          card.querySelectorAll('.nw-bar').forEach(function(bar, i){
+            setTimeout(function(){
+              bar.style.height = 'var(--h)';
+            }, i * 100);
+          });
+        }
+
+        chartObs.unobserve(card);
+      });
+    }, { threshold: 0.25 });
+
+    chartCards.forEach(function(card){ chartObs.observe(card); });
+  }
+  // ─────────────────────────────────────────────────────────────────────────
+
   // ── Bloom — rotating features ────────────────────────────────────────────
   var FEATURES = [
     { id:'ic-accounts',     name:'Multiple Accounts',  desc:'Track cash, bank &amp; wallets side by side — any currency.' },

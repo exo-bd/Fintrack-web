@@ -428,6 +428,132 @@
     </div>
   </section>
 
+  <!-- CHARTS PREVIEW -->
+  <section class="charts" id="preview">
+    <div class="wrap">
+      <span class="eyebrow">See inside the app</span>
+      <h2 style="margin-top:14px;font-size:clamp(26px,3.2vw,38px)">Your money, <em class="grad-text">visualized</em>.</h2>
+      <p style="color:var(--text-2);margin:12px 0 44px;max-width:480px;line-height:1.65;font-size:15.5px">Real charts. Real insights. Every number updated automatically from your own accounts.</p>
+
+      <div class="charts-grid">
+
+        <!-- 1. Donut — spending by category -->
+        <div class="chart-card" data-chart="donut">
+          <div class="chart-header">
+            <span class="chart-title">Spending by category</span>
+            <span class="chart-period">Oct 2026</span>
+          </div>
+          <div class="donut-wrap">
+            <svg viewBox="0 0 140 140" class="donut-svg" aria-hidden="true">
+              <circle class="donut-bg" cx="70" cy="70" r="52"/>
+              <circle class="donut-seg d1" cx="70" cy="70" r="52" transform="rotate(-90 70 70)" data-da="114.35 326.73"/>
+              <circle class="donut-seg d2" cx="70" cy="70" r="52" transform="rotate(-90 70 70)" data-da="71.88 326.73" style="stroke-dashoffset:-114.35"/>
+              <circle class="donut-seg d3" cx="70" cy="70" r="52" transform="rotate(-90 70 70)" data-da="58.81 326.73" style="stroke-dashoffset:-186.23"/>
+              <circle class="donut-seg d4" cx="70" cy="70" r="52" transform="rotate(-90 70 70)" data-da="49.01 326.73" style="stroke-dashoffset:-245.04"/>
+              <circle class="donut-seg d5" cx="70" cy="70" r="52" transform="rotate(-90 70 70)" data-da="32.67 326.73" style="stroke-dashoffset:-294.05"/>
+            </svg>
+            <div class="donut-center">
+              <span class="donut-amount">28,450</span>
+              <span class="donut-lbl">Total spent</span>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <div class="dleg"><span class="ldot ld1"></span><span>Food</span><span class="lpct">35%</span></div>
+            <div class="dleg"><span class="ldot ld2"></span><span>Transport</span><span class="lpct">22%</span></div>
+            <div class="dleg"><span class="ldot ld3"></span><span>Shopping</span><span class="lpct">18%</span></div>
+            <div class="dleg"><span class="ldot ld4"></span><span>Bills</span><span class="lpct">15%</span></div>
+            <div class="dleg"><span class="ldot ld5"></span><span>Other</span><span class="lpct">10%</span></div>
+          </div>
+        </div>
+
+        <!-- 2. Line — income vs expense -->
+        <div class="chart-card" data-chart="line">
+          <div class="chart-header">
+            <span class="chart-title">Income vs Expense</span>
+            <span class="chart-period">6 months</span>
+          </div>
+          <div class="line-wrap">
+            <svg viewBox="0 0 280 110" class="line-svg" aria-hidden="true">
+              <line x1="0" y1="28" x2="280" y2="28" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <line x1="0" y1="58" x2="280" y2="58" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <line x1="0" y1="88" x2="280" y2="88" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              <path class="c-area income-area" d="M0,38 L56,28 L112,34 L168,18 L224,24 L280,10 L280,110 L0,110 Z"/>
+              <path class="c-area expense-area" d="M0,58 L56,52 L112,65 L168,47 L224,54 L280,50 L280,110 L0,110 Z"/>
+              <polyline class="c-line income-line" points="0,38 56,28 112,34 168,18 224,24 280,10"/>
+              <polyline class="c-line expense-line" points="0,58 56,52 112,65 168,47 224,54 280,50"/>
+              <circle cx="280" cy="10" r="4" fill="#00D4FF"/>
+              <circle cx="280" cy="50" r="4" fill="#7C3AFF"/>
+            </svg>
+            <div class="lx-labels">
+              <span>May</span><span>Jun</span><span>Jul</span>
+              <span>Aug</span><span>Sep</span><span>Oct</span>
+            </div>
+          </div>
+          <div class="ll-legend">
+            <div class="dleg"><span class="ll-dot" style="background:#00D4FF"></span><span>Income</span></div>
+            <div class="dleg"><span class="ll-dot" style="background:#7C3AFF"></span><span>Expense</span></div>
+          </div>
+        </div>
+
+        <!-- 3. Budget progress bars -->
+        <div class="chart-card" data-chart="budget">
+          <div class="chart-header">
+            <span class="chart-title">Budget tracker</span>
+            <span class="chart-period">Oct 2026</span>
+          </div>
+          <div class="blist">
+            <div class="bitem">
+              <div class="brow"><span>🍜 Food</span><span class="bpct">68%</span></div>
+              <div class="bbar"><div class="bfill" style="--pct:68%;--col:#7C3AFF"></div></div>
+            </div>
+            <div class="bitem">
+              <div class="brow"><span>🚌 Transport</span><span class="bpct">45%</span></div>
+              <div class="bbar"><div class="bfill" style="--pct:45%;--col:#00D4FF"></div></div>
+            </div>
+            <div class="bitem">
+              <div class="brow"><span>🛍️ Shopping</span><span class="bpct warn">92%</span></div>
+              <div class="bbar"><div class="bfill warn" style="--pct:92%;--col:#FFB547"></div></div>
+            </div>
+            <div class="bitem">
+              <div class="brow"><span>💡 Bills</span><span class="bpct">30%</span></div>
+              <div class="bbar"><div class="bfill" style="--pct:30%;--col:#00FFB3"></div></div>
+            </div>
+            <div class="bitem">
+              <div class="brow"><span>🎮 Entertainment</span><span class="bpct">55%</span></div>
+              <div class="bbar"><div class="bfill" style="--pct:55%;--col:#9D6BFF"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Net Worth bars -->
+        <div class="chart-card" data-chart="bar">
+          <div class="chart-header">
+            <span class="chart-title">Net worth</span>
+            <span class="chart-period grow">↑ 38.8%</span>
+          </div>
+          <div class="nw-wrap">
+            <div class="nw-chart">
+              <div class="nw-col"><div class="nw-bar" style="--h:49%"></div></div>
+              <div class="nw-col"><div class="nw-bar" style="--h:54%"></div></div>
+              <div class="nw-col"><div class="nw-bar" style="--h:51%"></div></div>
+              <div class="nw-col"><div class="nw-bar" style="--h:58%"></div></div>
+              <div class="nw-col"><div class="nw-bar" style="--h:62%"></div></div>
+              <div class="nw-col"><div class="nw-bar nw-bar-active" style="--h:78%"></div></div>
+            </div>
+            <div class="nw-x">
+              <span>May</span><span>Jun</span><span>Jul</span>
+              <span>Aug</span><span>Sep</span><span>Oct</span>
+            </div>
+          </div>
+          <div class="nw-vals">
+            <span>৳85k</span><span class="nw-now">৳118k <small>now</small></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- TRUST -->
   <section class="trust" id="trust">
     <div class="wrap">
