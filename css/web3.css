@@ -100,3 +100,59 @@ body::after{
   .card:hover::before, .closing::before, .arrow-down::after{ animation:none; }
   .arrow-down::after{ opacity:0; }
 }
+
+/* ==========================================================================
+   ८) Charts section — spider-web canvas + interactive charts
+   ========================================================================== */
+.charts{ position:relative; overflow:hidden; }
+.charts .chart-web{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:2; }
+.charts .wrap{ position:relative; z-index:1; }
+
+/* Card: spotlight + tilt */
+.chart-card{ transition:border-color .3s ease, box-shadow .3s ease, transform .22s ease-out; transform-style:preserve-3d; }
+.chart-card::after{
+  content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:radial-gradient(260px circle at var(--cx,-999px) var(--cy,-999px), rgba(0,212,255,.11), transparent 65%);
+}
+
+/* Tooltip (line + net-worth chart) */
+.line-wrap, .nw-wrap{ position:relative; }
+.ct{
+  position:absolute; z-index:5; pointer-events:none; white-space:nowrap;
+  padding:8px 11px; border-radius:11px;
+  font-family:var(--font-mono); font-size:11px; line-height:1.6; color:var(--text-2);
+  background:rgba(10,8,34,.96); border:1px solid var(--border-p);
+  box-shadow:0 10px 30px rgba(0,0,0,.5);
+  opacity:0; transform:translate(-50%,-112%); transition:opacity .15s ease;
+}
+.ct.show{ opacity:1; }
+.ct b{ display:block; color:#fff; font-weight:600; margin-bottom:2px; }
+.ct i{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:baseline; }
+
+/* Line chart crosshair */
+.line-svg{ cursor:crosshair; touch-action:pan-y; }
+.xh{ stroke:rgba(255,255,255,.28); stroke-width:1; stroke-dasharray:3 3; }
+.xd{ stroke:#fff; stroke-width:1.5; }
+
+/* Donut */
+.donut-seg{ cursor:pointer; transition:stroke-dasharray 1.1s cubic-bezier(.4,0,.2,1), stroke-width .2s ease, opacity .2s ease; }
+.donut-wrap.hovering .donut-seg{ opacity:.3; }
+.donut-wrap.hovering .donut-seg.on{ opacity:1; stroke-width:23; }
+.dleg{ cursor:pointer; transition:color .2s ease, transform .2s ease; }
+.dleg.on{ color:#fff; transform:translateX(4px); }
+.donut-amount, .donut-lbl{ transition:opacity .15s ease; }
+
+/* Budget bars */
+.bitem{ transition:opacity .2s ease; cursor:default; }
+.blist:hover .bitem{ opacity:.4; }
+.blist .bitem:hover{ opacity:1; }
+.bitem:hover .bfill{ filter:brightness(1.3); box-shadow:0 0 14px var(--col); }
+.bitem:hover .bpct{ color:#fff; }
+
+/* Net-worth bars */
+.nw-col{ cursor:pointer; }
+.nw-col:hover .nw-bar{ filter:brightness(1.45); box-shadow:0 0 18px rgba(0,212,255,.5); }
+
+@media(prefers-reduced-motion:reduce){
+  .chart-card{ transform:none!important; }
+}
