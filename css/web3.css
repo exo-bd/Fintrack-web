@@ -225,3 +225,13 @@
   .wcard{ animation:none; }
   .w3-sheet{ animation:none; }
 }
+
+/* ── ६) Bloom (hero petal) size fix ─────────────────────────────────────────
+   সমস্যা: .bloom-wrap flex item হওয়ায় নিজের content অনুযায়ী shrink করত।
+   Stage-এর ভেতরের সবকিছু absolute, আর info box তখন খালি — তাই width ~46px
+   থাকত। Petal-এ hover/click করলে info box-এ লেখা আসত, wrapper চওড়া হতো,
+   আর petal হঠাৎ বড় দেখাত। এখন wrapper সবসময় পুরো column জুড়ে থাকে। */
+.hero-visual{ width:100%; }
+.bloom-wrap{ width:100%; }
+.bloom-stage{ width:100%; min-width:260px; }
+@media(max-width:500px){ .bloom-stage{ min-width:0; } }
