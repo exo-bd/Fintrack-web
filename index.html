@@ -152,9 +152,6 @@
       <a href="terms.html">Terms</a>
       <a class="nav-cta" href="#download">Launching <span class="js-launch-short">01 Nov 2026</span></a>
     </nav>
-    <button class="wallet-pill" id="walletPill" type="button" aria-haspopup="dialog" data-connected="false">
-      <span class="wp-dot" aria-hidden="true"></span><span class="wp-label">Connect</span><span class="wp-long"> wallet</span>
-    </button>
     <button class="nav-toggle" id="navToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle menu">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
@@ -292,6 +289,14 @@
         <div class="stat-sep"></div>
         <div class="stat-item"><span class="stat-num" data-target="100">0</span><span class="stat-suf">%</span><span class="stat-label">Private &amp; encrypted</span></div>
       </div>
+    </div>
+  </div>
+
+  <!-- FEATURE TICKER -->
+  <div class="ticker" aria-label="FinTrack features">
+    <div class="ticker-track">
+      <div class="tk-set" style="display:flex"><span class="tk"><svg aria-hidden="true"><use href="#ic-accounts"/></svg>Multiple accounts</span><span class="tk"><svg aria-hidden="true"><use href="#ic-category"/></svg>Categories</span><span class="tk"><svg aria-hidden="true"><use href="#ic-receipt"/></svg>Receipt scanner</span><span class="tk"><svg aria-hidden="true"><use href="#ic-recur"/></svg>Recurring bills</span><span class="tk"><svg aria-hidden="true"><use href="#ic-wallet"/></svg>Budgets</span><span class="tk"><svg aria-hidden="true"><use href="#ic-exchange"/></svg>Debt &amp; credit</span><span class="tk"><svg aria-hidden="true"><use href="#ic-calendar"/></svg>Calendar</span><span class="tk"><svg aria-hidden="true"><use href="#ic-todo"/></svg>To-do lists</span><span class="tk"><svg aria-hidden="true"><use href="#ic-ai"/></svg>AI insights</span><span class="tk"><svg aria-hidden="true"><use href="#ic-networth"/></svg>Net worth</span><span class="tk"><svg aria-hidden="true"><use href="#ic-report"/></svg>PDF &amp; Excel reports</span><span class="tk"><svg aria-hidden="true"><use href="#ic-cloud"/></svg>Cloud backup</span><span class="tk"><svg aria-hidden="true"><use href="#ic-reminder"/></svg>Reminders</span><span class="tk"><svg aria-hidden="true"><use href="#ic-gamification"/></svg>Levels &amp; streaks</span><span class="tk"><svg aria-hidden="true"><use href="#ic-reward"/></svg>Rewards</span><span class="tk"><svg aria-hidden="true"><use href="#ic-community"/></svg>Community</span><span class="tk"><svg aria-hidden="true"><use href="#ic-notification"/></svg>Smart notifications</span></div>
+      <div class="tk-set" style="display:flex" aria-hidden="true"><span class="tk"><svg aria-hidden="true"><use href="#ic-accounts"/></svg>Multiple accounts</span><span class="tk"><svg aria-hidden="true"><use href="#ic-category"/></svg>Categories</span><span class="tk"><svg aria-hidden="true"><use href="#ic-receipt"/></svg>Receipt scanner</span><span class="tk"><svg aria-hidden="true"><use href="#ic-recur"/></svg>Recurring bills</span><span class="tk"><svg aria-hidden="true"><use href="#ic-wallet"/></svg>Budgets</span><span class="tk"><svg aria-hidden="true"><use href="#ic-exchange"/></svg>Debt &amp; credit</span><span class="tk"><svg aria-hidden="true"><use href="#ic-calendar"/></svg>Calendar</span><span class="tk"><svg aria-hidden="true"><use href="#ic-todo"/></svg>To-do lists</span><span class="tk"><svg aria-hidden="true"><use href="#ic-ai"/></svg>AI insights</span><span class="tk"><svg aria-hidden="true"><use href="#ic-networth"/></svg>Net worth</span><span class="tk"><svg aria-hidden="true"><use href="#ic-report"/></svg>PDF &amp; Excel reports</span><span class="tk"><svg aria-hidden="true"><use href="#ic-cloud"/></svg>Cloud backup</span><span class="tk"><svg aria-hidden="true"><use href="#ic-reminder"/></svg>Reminders</span><span class="tk"><svg aria-hidden="true"><use href="#ic-gamification"/></svg>Levels &amp; streaks</span><span class="tk"><svg aria-hidden="true"><use href="#ic-reward"/></svg>Rewards</span><span class="tk"><svg aria-hidden="true"><use href="#ic-community"/></svg>Community</span><span class="tk"><svg aria-hidden="true"><use href="#ic-notification"/></svg>Smart notifications</span></div>
     </div>
   </div>
 
@@ -594,92 +599,6 @@
     </div>
   </section>
 
-  <!-- WALLET -->
-  <section class="wallet" id="wallet">
-    <div class="wrap wallet-grid">
-      <div class="wallet-copy" data-reveal>
-        <span class="eyebrow">Wallet, optional</span>
-        <h2>Connect a wallet. Claim your Launch Pass.</h2>
-        <p>Connect any browser wallet to see your address, network, and balance on this page, then sign a free message to get a shareable Launch Pass for 01 November.</p>
-        <ul class="w3-facts">
-          <li>
-            <span class="mark"><svg><use href="#ic-shield"/></svg></span>
-            <div><h4>Read-only</h4><p>This page can see your public address, network, and balance. It can never move funds.</p></div>
-          </li>
-          <li>
-            <span class="mark"><svg><use href="#ic-receipt"/></svg></span>
-            <div><h4>Signing is free</h4><p>The Launch Pass uses a message signature, not a transaction. There is no gas fee and nothing is approved.</p></div>
-          </li>
-          <li>
-            <span class="mark"><svg><use href="#ic-profile"/></svg></span>
-            <div><h4>Stays in your browser</h4><p>Your address and pass are not sent to our servers. The pass is saved only in this browser.</p></div>
-          </li>
-        </ul>
-        <p class="w3-note">The FinTrack app tracks crypto holdings manually in Net worth. This wallet connection is separate and only works on this website. See the <a href="privacy.html#website-wallet">Privacy Policy</a>.</p>
-      </div>
-
-      <div class="wallet-stage" data-reveal>
-        <div class="wcard" id="walletCard" data-state="idle" data-pass="none">
-          <div class="wc-head">
-            <div class="wc-who">
-              <span class="wc-ico" id="wcIco"><svg><use href="#ic-wallet"/></svg></span>
-              <span class="wc-name" id="wcName">Not connected</span>
-            </div>
-            <span class="wc-status"><i aria-hidden="true"></i><span class="wc-status-text">Wallet</span></span>
-          </div>
-
-          <div class="wc-idle">
-            <h3>No wallet connected</h3>
-            <p>Pick a wallet to preview your balance and claim your Launch Pass. You can disconnect anytime.</p>
-            <button class="btn btn-primary" id="wcConnect" type="button">Connect wallet</button>
-          </div>
-
-          <div class="wc-live">
-            <div class="wc-addr">
-              <code id="wcAddr">—</code>
-              <button class="icon-btn" id="wcCopy" type="button" aria-label="Copy address">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
-              </button>
-              <button class="icon-btn" id="wcDisconnect" type="button" aria-label="Disconnect wallet">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v8"/><path d="M6.3 7.2a8 8 0 1 0 11.4 0"/></svg>
-              </button>
-            </div>
-
-            <div class="wc-stats">
-              <div class="wc-stat net"><small>Network</small><b id="wcNet">—</b></div>
-              <div class="wc-stat bal"><small>Balance</small><b id="wcBal">—</b></div>
-              <div class="wc-stat"><small>Block</small><b id="wcBlock">—</b></div>
-            </div>
-
-            <p class="chain-label">Switch network</p>
-            <div class="chain-chips" id="chainChips"></div>
-
-            <div class="pass-box">
-              <h4>Launch Pass</h4>
-              <div class="pass-claim">
-                <p>Sign a free message to create your pass. It is not a transaction and costs nothing.</p>
-                <div class="pass-actions">
-                  <button class="btn btn-gold" id="wcClaim" type="button">Sign &amp; claim pass</button>
-                </div>
-              </div>
-              <div class="pass-ready">
-                <div class="pass-ticket">
-                  <div class="pt-top">FinTrack <span>Launch Pass</span></div>
-                  <div class="pt-id" id="ptId">FT-0000-0000</div>
-                  <div class="pt-meta" id="ptMeta">—</div>
-                </div>
-                <div class="pass-actions">
-                  <button class="btn btn-primary" id="wcDownload" type="button">Download image</button>
-                  <button class="link-btn" id="wcRemove" type="button">Remove pass</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- TRUST -->
   <section class="trust" id="trust">
     <div class="wrap">
@@ -755,7 +674,6 @@
         <a href="#how">How it works</a>
         <a href="#features">Features</a>
         <a href="#trust">Privacy &amp; security</a>
-        <a href="#wallet">Wallet &amp; Launch Pass</a>
       </div>
       <div class="footer-col">
         <h5>Legal</h5>
@@ -775,18 +693,6 @@
     <span>com.fintrack.app</span>
   </div>
 </footer>
-
-<!-- Wallet picker -->
-<div class="w3-modal" id="walletModal" role="dialog" aria-modal="true" aria-labelledby="wmTitle" hidden>
-  <div class="w3-backdrop" data-close></div>
-  <div class="w3-sheet">
-    <h3 id="wmTitle">Choose a wallet</h3>
-    <p>Only your public address, network, and balance are read. Nothing is sent to FinTrack.</p>
-    <ul class="w3-list" id="walletList"></ul>
-    <button class="btn btn-ghost w3-close" type="button" data-close>Cancel</button>
-  </div>
-</div>
-<div class="w3-toast" id="w3Toast" role="status" aria-live="polite"></div>
 
 <script src="js/config.js"></script>
 <script src="js/main.js"></script>
