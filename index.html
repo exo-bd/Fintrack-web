@@ -134,6 +134,7 @@
   </defs>
 </svg>
 
+<div class="scroll-progress" id="scrollProgress"></div>
 <div class="nav-sticky">
 <header class="nav">
   <div class="wrap">
@@ -166,6 +167,9 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="aurora a1" aria-hidden="true"></div>
+    <div class="aurora a2" aria-hidden="true"></div>
+    <div class="aurora a3" aria-hidden="true"></div>
     <div class="wrap">
       <div>
         <span class="eyebrow">Your complete money manager</span>
@@ -209,10 +213,25 @@
         <p class="pill-note">FinTrack launches worldwide on Google Play on <span class="js-launch-full">01 November 2026</span>. This page also serves as the app's official Play Store listing &amp; privacy reference.</p>
       </div>
 
+      <div class="hero-visual">
+      <div class="float-cards" aria-hidden="true">
+        <div class="float-card fc-1">
+          <span class="fc-ico">✅</span>
+          <div class="fc-body"><div class="fc-name">Budget on track</div><div class="fc-sub">Saved 15% this month</div></div>
+        </div>
+        <div class="float-card fc-2">
+          <span class="fc-ico" style="background:linear-gradient(135deg,#7C3AFF,#00D4FF);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:normal">✦</span>
+          <div class="fc-body"><div class="fc-name">AI Insight</div><div class="fc-sub">Food spend down 8%</div></div>
+        </div>
+        <div class="float-card fc-3">
+          <span class="fc-ico">🔔</span>
+          <div class="fc-body"><div class="fc-name">Reminder</div><div class="fc-sub">Rent due in 3 days</div></div>
+        </div>
+      </div>
       <div class="bloom-wrap">
         <div class="bloom-stage" id="bloomStage" role="img" aria-label="Six core FinTrack features: AI Insights, Reports, Gamification, Community, Budgets, and Accounts.">
           <div class="bloom-orbit" aria-hidden="true"></div>
-          <div class="bloom-hub" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="bloom-hub" aria-hidden="true">$€₹</div>
           <div class="petal p1" tabindex="0" role="button"
                data-label="AI Insights"
                data-desc="Monthly AI analysis of your spending, savings &amp; category trends — private, built on your own data.">
@@ -252,8 +271,24 @@
           </div>
         </div>
       </div>
+      </div><!-- /hero-visual -->
     </div>
   </section>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip">
+    <div class="wrap">
+      <div class="stats-row">
+        <div class="stat-item"><span class="stat-num" data-target="17">0</span><span class="stat-suf">+</span><span class="stat-label">Features</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat-item"><span class="stat-num stat-text">Any</span><span class="stat-label">Currency</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat-item"><span class="stat-num stat-text">AI</span><span class="stat-label">Monthly insights</span></div>
+        <div class="stat-sep"></div>
+        <div class="stat-item"><span class="stat-num" data-target="100">0</span><span class="stat-suf">%</span><span class="stat-label">Private &amp; encrypted</span></div>
+      </div>
+    </div>
+  </div>
 
   <!-- FLOW: Accounts to Dashboard -->
   <section class="flow">
@@ -453,8 +488,8 @@
               <circle class="donut-seg d5" cx="70" cy="70" r="52" transform="rotate(-90 70 70)" data-da="32.67 326.73" style="stroke-dashoffset:-294.05"/>
             </svg>
             <div class="donut-center">
-              <span class="donut-amount">Oct</span>
-              <span class="donut-lbl">Monthly breakdown</span>
+              <span class="donut-amount">28,450</span>
+              <span class="donut-lbl">Total spent</span>
             </div>
           </div>
           <div class="donut-legend">
@@ -546,7 +581,7 @@
             </div>
           </div>
           <div class="nw-vals">
-            <span>85k</span><span class="nw-now">118k <small>now</small></span>
+            <span>৳85k</span><span class="nw-now">৳118k <small>now</small></span>
           </div>
         </div>
 
@@ -604,7 +639,7 @@
     <div class="wrap">
       <span class="eyebrow">Built for everyone, anywhere</span>
       <h2>One app for your whole financial life.</h2>
-      <p>Track any currency, in any country. Multiple accounts, budgets, debt tracking, AI insights, and a community to keep you motivated. Free to start, with an optional premium tier for power users.</p>
+      <p>Whether you're tracking dollars, euros, taka, rupees, or any other currency — FinTrack works with your money, wherever you are. Multiple accounts, budgets, debt tracking, AI insights, and a community to keep you motivated. Free to start, with an optional premium tier for power users.</p>
       <div class="cta-row">
         <a class="btn btn-gold" href="#download" onclick="event.preventDefault()" style="white-space:nowrap"><span class="hide-mobile">Launching <span class="js-launch-full">01 November 2026</span> — Google Play</span><span class="show-mobile">Launching <span class="js-launch-short">01 Nov 2026</span></span></a>
         <a class="btn btn-ghost" href="privacy.html">Privacy Policy</a>

@@ -348,3 +348,78 @@
     });
   });
 })();
+
+// ── Advanced Web3 Effects ─────────────────────────────────────────────────
+(function(){
+  var rM = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var isMob = window.innerWidth < 881;
+
+  // Scroll progress bar
+  var prog = document.getElementById('scrollProgress');
+  if(prog){
+    window.addEventListener('scroll', function(){
+      var pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      prog.style.width = Math.min(pct*100,100) + '%';
+    }, {passive:true});
+  }
+
+  // Cursor glow
+  if(!rM && !isMob){
+    var glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    document.body.appendChild(glow);
+    window.addEventListener('mousemove', function(e){
+      glow.style.left = e.clientX + 'px';
+      glow.style.top  = e.clientY + 'px';
+    }, {passive:true});
+  }
+
+  // Feature card spotlight + 3D tilt
+  if(!rM && !isMob){
+    document.querySelectorAll('.card').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width  - 0.5;
+        var y = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.setProperty('--cx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--cy', (e.clientY - r.top)  + 'px');
+        card.style.transform = 'translateY(-5px) perspective(700px) rotateX('+(-y*9)+'deg) rotateY('+(x*9)+'deg)';
+      });
+      card.addEventListener('mouseleave', function(){
+        card.style.setProperty('--cx','-999px');
+        card.style.setProperty('--cy','-999px');
+        card.style.transition = 'box-shadow .3s ease, border-color .3s ease, transform .5s cubic-bezier(.2,.8,.2,1)';
+        card.style.transform = '';
+        setTimeout(function(){ card.style.transition=''; }, 520);
+      });
+      card.addEventListener('mouseenter', function(){
+        card.style.transition = 'box-shadow .3s ease, border-color .3s ease, transform .12s ease';
+      });
+    });
+  }
+
+  // Stats counter animation
+  var statNums = document.querySelectorAll('.stat-num[data-target]');
+  if(statNums.length){
+    var statObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        var el     = entry.target;
+        var target = parseInt(el.getAttribute('data-target'), 10);
+        var start  = 0;
+        var dur    = rM ? 0 : 1400;
+        var t0     = performance.now();
+        function step(now){
+          var p   = Math.min((now - t0) / dur, 1);
+          var val = Math.round(p * p * target);
+          el.textContent = val;
+          if(p < 1) requestAnimationFrame(step);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(step);
+        statObs.unobserve(el);
+      });
+    }, {threshold:0.5});
+    statNums.forEach(function(el){ statObs.observe(el); });
+  }
+})();
