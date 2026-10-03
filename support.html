@@ -4,13 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Support — FinTrack</title>
+<link rel="stylesheet" href="css/style.css?v=20261003">
 <meta name="description" content="Get help with FinTrack, request account or data deletion, and find answers to common questions.">
-<link rel="icon" href="assets/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="assets/favicon.png">
+<meta name="theme-color" content="#07071A">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://YOUR-DOMAIN/support.html">
+<link rel="icon" href="assets/favicon-32.png?v=20261003" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20261003">
+<meta property="og:site_name" content="FinTrack">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Support — FinTrack">
+<meta property="og:description" content="Get help with FinTrack, request account or data deletion, and find answers to common questions.">
+<meta property="og:url" content="https://YOUR-DOMAIN/support.html">
+<meta property="og:image" content="https://YOUR-DOMAIN/assets/og-image.png?v=20261003">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="FinTrack — every account, every habit, one app">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Fonts: stylesheet is injected by js/main.js after first paint (non-blocking, font-display: swap).
+     Pages stay fully readable with system fonts if JS is off. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
 </head>
 <body>
 <a class="skip-link" href="#doc-main">Skip to content</a>
@@ -19,7 +34,7 @@
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="index.html">
-      <img src="assets/favicon.png" alt="" width="32" height="32">
+      <img src="assets/icon-64.png?v=20261003" alt="" width="32" height="32" decoding="async">
       FinTrack
     </a>
     <div class="nav-right">
@@ -75,13 +90,9 @@
         <h3>You can request full deletion — even without the app installed</h3>
         <p>Deleting the app from your phone does <strong>not</strong> delete your account or your data from our servers. Use one of the options below to remove everything permanently.</p>
       </div>
-      <p><strong>Option 1 — In the app:</strong> open FinTrack → Settings → Account → Delete Account, then confirm. This immediately starts the deletion process.</p>
-      <p><strong>Option 2 — From the web (no app required):</strong> email us at the address above with the subject line <strong>"Delete my FinTrack account"</strong> from the email address associated with your account, including:</p>
-      <ul>
-        <li>The email or phone number you used to sign in to FinTrack</li>
-        <li>Confirmation that you want your account <em>and</em> all associated data permanently deleted</li>
-      </ul>
-      <p>Once we verify the request, we permanently delete your account profile, transactions, budgets, debts, recurring bills, reward progress, and any synced receipt images — we do not deactivate or freeze the account, we remove it. This is usually completed within 7 business days. We may retain a narrow set of data where law requires it (for example, billing records); see our <a href="privacy.html#retention">Retention policy</a> for details.</p>
+      <p><strong>Option 1 — In the app:</strong> open FinTrack → Settings → Account → Delete Account, then confirm with the code we email you.</p>
+      <p><strong>Option 2 — From the web (no app required):</strong> use our dedicated <a href="delete-account.html">account deletion page</a>, or email us at the address above with the subject line <strong>"Delete my FinTrack account"</strong> from the email address associated with your account. Including your FinTrack ID (shown on your profile, like <code>fintrack_A0000001</code>) helps us find it faster.</p>
+      <p>Once we verify the request, we permanently delete your account profile, transactions, budgets, debts, recurring bills, reward progress, cloud backups and synced images — we do not deactivate or freeze the account, we remove it. This is usually completed within 7 business days and no later than 30 days. A small set of data is kept for fraud prevention and legal reasons; see our <a href="privacy.html#retention">Retention policy</a> for exactly what.</p>
       <p class="muted" style="font-size:13.5px;">If you only want specific data removed (for example, just your receipt images) rather than your whole account, mention that instead in your email and we'll action that narrower request.</p>
 
       <h2 id="faq">Frequently asked questions</h2>
@@ -98,17 +109,17 @@
 
       <details class="faq-item">
         <summary>How accurate are AI Insights?<span class="plus">+</span></summary>
-        <p>Once a month, AI Insights compare a summary of your activity against your own past months to highlight trends — they're a starting point for reflection, not financial advice. If an insight looks off, it's usually because of a miscategorized or missing transaction earlier in the month; correcting that will improve next month's insight.</p>
+        <p>AI Insights compare your activity against your own past months to highlight trends — they're a starting point for reflection, not financial advice. If an insight looks off, it's usually because of a miscategorized or missing transaction earlier in the month; correcting that will improve next month's insight.</p>
       </details>
 
       <details class="faq-item">
         <summary>Does my data get sent to an AI company for Insights?<span class="plus">+</span></summary>
-        <p>No. Only a small monthly summary — your total income, expenses, savings, and category percentages — is used, never your individual transactions or account details. That summary is analyzed by a language model we run ourselves, not by OpenAI, Google Gemini, or any other external AI provider. See <a href="privacy.html#ai-insights">How AI insights work</a> in our Privacy Policy for the full breakdown.</p>
+        <p>No. Insights are calculated on your device from your own entries, and your transactions are not sent to OpenAI, Google Gemini or any other external AI provider to produce them. See <a href="privacy.html#ai-insights">How AI insights work</a> in our Privacy Policy for the full breakdown.</p>
       </details>
 
       <details class="faq-item">
-        <summary>How do I cancel my premium subscription?<span class="plus">+</span></summary>
-        <p>Open the Google Play Store app → tap your profile picture → Payments &amp; subscriptions → Subscriptions → FinTrack → Cancel. Your premium features remain active until the end of the billing period you already paid for.</p>
+        <summary>Does premium renew automatically?<span class="plus">+</span></summary>
+        <p>No. Premium plans are one-time purchases for a fixed period, so there is nothing to cancel. When the period ends, premium features end unless you buy again. You can see your purchases in Google Play → Payments &amp; subscriptions → Budget &amp; history, and refunds follow Google Play's refund policy.</p>
       </details>
 
       <details class="faq-item">
@@ -156,7 +167,7 @@
   <div class="wrap">
     <div>
       <a class="brand" href="index.html">
-        <img src="assets/favicon.png" alt="" width="32" height="32">
+        <img src="assets/icon-64.png?v=20261003" alt="" width="32" height="32" decoding="async">
         FinTrack
       </a>
       <p class="tag">A smart finance manager built for every account, habit, and goal — organized, motivating, and yours.</p>
@@ -175,7 +186,7 @@
       <div class="footer-col">
         <h5>Help</h5>
         <a href="support.html">Support</a>
-        <a href="support.html#delete-account">Delete my account</a>
+        <a href="delete-account.html">Delete my account</a>
         <a href="mailto:support.fintrack.app@gmail.com">support.fintrack.app@gmail.com</a>
       </div>
     </div>
@@ -186,6 +197,6 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261003" defer></script>
 </body>
 </html>

@@ -156,3 +156,8 @@ body::after{
 @media(prefers-reduced-motion:reduce){
   .chart-card{ transform:none!important; }
 }
+
+/* [PERF] angular-spin blur layer is the most expensive paint on the page — static on phones */
+@media (max-width: 880px){
+  .closing::before{ animation:none!important; filter:blur(36px); }
+}

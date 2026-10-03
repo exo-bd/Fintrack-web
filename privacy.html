@@ -4,14 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy — FinTrack</title>
+<link rel="stylesheet" href="css/style.css?v=20261003">
 <meta name="description" content="How FinTrack collects, uses, and protects your data, including account, camera, AI insight, and biometric permissions.">
+<meta name="theme-color" content="#07071A">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://YOUR-DOMAIN/privacy.html">
+<link rel="icon" href="assets/favicon-32.png?v=20261003" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20261003">
+<meta property="og:site_name" content="FinTrack">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Privacy Policy — FinTrack">
-<link rel="icon" href="assets/favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="assets/favicon.png">
+<meta property="og:description" content="How FinTrack collects, uses, and protects your data, including account, camera, AI insight, and biometric permissions.">
+<meta property="og:url" content="https://YOUR-DOMAIN/privacy.html">
+<meta property="og:image" content="https://YOUR-DOMAIN/assets/og-image.png?v=20261003">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="FinTrack — every account, every habit, one app">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Fonts: stylesheet is injected by js/main.js after first paint (non-blocking, font-display: swap).
+     Pages stay fully readable with system fonts if JS is off. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
 </head>
 <body>
 <a class="skip-link" href="#doc-main">Skip to content</a>
@@ -20,7 +34,7 @@
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="index.html">
-      <img src="assets/favicon.png" alt="" width="32" height="32">
+      <img src="assets/icon-64.png?v=20261003" alt="" width="32" height="32" decoding="async">
       FinTrack
     </a>
     <div class="nav-right">
@@ -87,12 +101,14 @@
         <li><strong>Multiple accounts</strong> — the names, types (such as cash, bank, or mobile wallet), and balances for each account you set up to track.</li>
         <li><strong>Financial data you create</strong> — transactions, budgets, categories, debts, recurring bills, to-do items, and notes, whether entered manually or scanned from a receipt.</li>
         <li><strong>Camera and photos</strong> — receipt images you choose to scan or photos you choose to attach, processed to extract amounts and dates.</li>
-        <li><strong>Voice input</strong> — audio captured only while you actively use voice entry to add a transaction by speaking; it is converted to text on-device and not retained as an audio file.</li>
+        <li><strong>Voice input</strong> — audio captured only while you actively use voice entry to add a transaction by speaking. It is converted to text by your device's speech-recognition service (provided by Google or your device maker, which may process audio online depending on your device settings). FinTrack does not store the audio.</li>
         <li><strong>Biometric data</strong> — handled entirely by your device's operating system to unlock the app. FinTrack never receives or stores your fingerprint or face data.</li>
         <li><strong>AI insight summary data</strong> — once a month, an aggregated summary of your activity (such as total income, total expenses, savings amount, and the percentage of spending in each category) is generated and stored, as described in <a href="#ai-insights">How AI insights work</a> below. This summary never includes your individual transactions, merchant names, account numbers, or notes.</li>
         <li><strong>Community activity</strong> — your display name and any posts, comments, or progress you choose to share are visible to other users inside the Community feature.</li>
         <li><strong>Gamification &amp; reward data</strong> — points, streaks, levels, and reward progress generated from your in-app activity.</li>
-        <li><strong>Device &amp; diagnostic data</strong> — basic technical information (device model, OS version, crash logs) used to keep the app stable.</li>
+        <li><strong>Device &amp; diagnostic data</strong> — basic technical information (device model, OS version, crash logs via Firebase Crashlytics) used to keep the app stable, plus device-integrity signals used to detect tampered or unsafe environments.</li>
+        <li><strong>Fraud-prevention record</strong> — when you register, we create a record keyed by a one-way (keyed-hash) fingerprint of your email address, with flags showing whether a promotional offer or free trial was used and your assigned FinTrack ID and group letter. It contains no plain-text email or name and is kept after account deletion — see <a href="#retention">Retention policy</a>.</li>
+        <li><strong>Purchase records</strong> — Google Play order and purchase-token identifiers for premium purchases (we never see your card details).</li>
       </ul>
 
       <h2 id="use">How we use your information</h2>
@@ -108,14 +124,14 @@
       <div class="callout">FinTrack does not use your financial data or receipt images to build an advertising profile, and does not sell this data to anyone.</div>
 
       <h2 id="ai-insights">How AI insights work</h2>
-      <p>AI Insights are designed to share as little of your data as possible while still giving you something genuinely useful. Here is exactly what happens, step by step:</p>
+      <p>AI Insights turn your own entries into plain-language observations — for example, a category where spending is rising, or a stronger savings rate than usual. Here is exactly what happens:</p>
       <ul>
-        <li><strong>1. We summarize, not export.</strong> Once a month, your activity is reduced to a single aggregated summary — total income, total expenses, total savings, and the percentage of spending in each category. Your individual transactions, merchant names, account numbers, and notes are never part of this summary.</li>
-        <li><strong>2. The summary is stored.</strong> That monthly summary (not your full data) is saved to our Cloud Firestore database, under your account, with the same per-account isolation described in <a href="#storage">Storage &amp; security</a> below.</li>
-        <li><strong>3. It's processed by us — not a third-party AI company.</strong> The summary is read and analyzed by a language model that we run ourselves, on our own infrastructure. It is not sent to OpenAI, Google Gemini, Anthropic, or any other external AI provider. The model compares your current month's summary against your own past summaries to spot trends — for example, a category where spending is rising, or a stronger savings rate than usual.</li>
-        <li><strong>4. The insight is saved back to your account.</strong> The resulting written insight is saved to Firestore under your account and shown to you in the app, alongside your own detailed data, so you can see exactly what it's based on.</li>
+        <li><strong>1. Calculated on your device.</strong> Insights are produced by FinTrack on your phone from data you have already entered (income, expenses, savings, category percentages and your past months). Your individual transactions, merchant names, account numbers and notes are not sent anywhere to generate them.</li>
+        <li><strong>2. No external AI provider.</strong> Your data is not sent to OpenAI, Google Gemini, Anthropic, or any other external AI service for this feature.</li>
+        <li><strong>3. Stays with your account.</strong> Like the rest of your app data, insights are covered by cloud backup when you are signed in, under your account and with the per-account isolation described in <a href="#storage">Storage &amp; security</a>.</li>
+        <li><strong>4. Not financial advice.</strong> Insights are a starting point for reflection. If we ever change how insights are produced, we will update this section before the change takes effect.</li>
       </ul>
-      <div class="callout">No advertiser, data broker, or external AI vendor ever receives your summarized financial data through this feature — it is processed entirely within systems we operate ourselves. Your monthly summaries are retained for as long as your account is active — see <a href="#retention">Retention policy</a> below.</div>
+      <p>Your data, including insights, is retained for as long as your account is active — see <a href="#retention">Retention policy</a>.</p>
 
       <h2 id="permissions">Permissions we request</h2>
       <p>Android requires apps to declare each permission up front. Here is what FinTrack asks for and why:</p>
@@ -123,44 +139,48 @@
         <thead><tr><th>Permission</th><th>Why FinTrack needs it</th></tr></thead>
         <tbody>
           <tr><td class="mono">CAMERA</td><td>Scan paper receipts and, optionally, set a profile photo.</td></tr>
-          <tr><td class="mono">READ_MEDIA_IMAGES / VIDEO / AUDIO</td><td>Attach existing photos, such as a saved receipt, from your gallery.</td></tr>
-          <tr><td class="mono">RECORD_AUDIO</td><td>Add a transaction by speaking, using on-device speech-to-text.</td></tr>
+          <tr><td class="mono">Gallery (no permission)</td><td>To attach an existing photo, FinTrack uses the Android system photo picker, so no media-library permission is requested and the app only receives the photos you choose.</td></tr>
+          <tr><td class="mono">RECORD_AUDIO</td><td>Add a transaction by speaking, using your device's speech-to-text service.</td></tr>
           <tr><td class="mono">USE_BIOMETRIC</td><td>Lock the app behind your fingerprint or face unlock.</td></tr>
           <tr><td class="mono">POST_NOTIFICATIONS</td><td>Send budget alerts, bill reminders, and reward notifications.</td></tr>
-          <tr><td class="mono">SCHEDULE_EXACT_ALARM</td><td>Trigger reminders and recurring-bill alerts at the exact time you set.</td></tr>
           <tr><td class="mono">RECEIVE_BOOT_COMPLETED</td><td>Restore your scheduled reminders after your device restarts.</td></tr>
-          <tr><td class="mono">FOREGROUND_SERVICE / FOREGROUND_SERVICE_DATA_SYNC</td><td>Keep data sync running reliably while the app is open.</td></tr>
           <tr><td class="mono">INTERNET</td><td>Sign in, sync your ledger to your account, and process premium purchases.</td></tr>
-          <tr><td class="mono">WAKE_LOCK / VIBRATE</td><td>Briefly keep the screen awake during sync and give haptic feedback for reminders.</td></tr>
+          <tr><td class="mono">AD_ID</td><td>Lets Google AdMob use your Android advertising ID to show and measure ads on the free tier. You can reset or delete it in Android Settings → Google → Ads.</td></tr>
+          <tr><td class="mono">WAKE_LOCK / VIBRATE</td><td>Let scheduled background sync and reminders finish reliably, and give haptic feedback.</td></tr>
         </tbody>
       </table>
       <p>You can review or revoke any of these at any time from Android Settings → Apps → FinTrack → Permissions. Revoking a permission only disables the related feature; it does not delete data you've already saved.</p>
 
       <h2 id="storage">Storage &amp; security</h2>
       <ul>
-        <li><strong>Local-first:</strong> your ledger is stored on your device first, in an encrypted local database, before anything syncs to the cloud.</li>
+        <li><strong>Local-first:</strong> your ledger is stored on your device first, in FinTrack's private app storage (protected by the Android app sandbox and, on supported devices, device encryption), before anything syncs to the cloud. You can add a PIN, pattern or biometric lock to the app.</li>
         <li><strong>Cloud sync:</strong> when signed in, data syncs to Cloud Firestore under your own Firebase account, governed by per-account access rules so one account can never read another's data.</li>
-        <li><strong>Sensitive fields:</strong> credentials and tokens are kept in encrypted secure storage provided by the Android operating system, not in plain text.</li>
+        <li><strong>Sensitive fields:</strong> sign-in tokens are kept in encrypted secure storage provided by the Android operating system; your app PIN or pattern is stored on the device only as a salted hash, never in plain text.</li>
+        <li><strong>App integrity:</strong> FinTrack uses Firebase App Check (Google Play Integrity) and the freeRASP security library to detect tampered, rooted or emulated environments. This processes device-integrity signals and may restrict features on compromised devices.</li>
         <li><strong>Account isolation:</strong> on a shared device, switching accounts does not expose another account's transactions, points, or settings.</li>
       </ul>
 
       <h2 id="deletion">Account &amp; data deletion</h2>
-      <p>You can permanently delete your FinTrack account and all associated data at any time:</p>
+      <p>You can permanently delete your FinTrack account and associated data at any time:</p>
       <ul>
-        <li><strong>In the app:</strong> go to Settings → Account → Delete Account, and confirm.</li>
-        <li><strong>From the web, without the app:</strong> visit our <a href="support.html#delete-account">account deletion page</a> and submit a request — useful if you've already uninstalled FinTrack.</li>
+        <li><strong>In the app:</strong> go to Settings → Account → Delete Account, and confirm with the code we email you.</li>
+        <li><strong>From the web, without the app:</strong> visit our <a href="delete-account.html">account deletion page</a> — useful if you've already uninstalled FinTrack.</li>
       </ul>
-      <p>Once verified, we permanently delete your account and the personal data tied to it — we do not just deactivate or freeze it. We may retain a limited subset of data where the law requires it (for example, billing records for tax purposes, or logs needed to investigate fraud or abuse); any such retention is described in <a href="#retention">Retention policy</a> below.</p>
+      <p>Once verified, we permanently delete your account and the personal data tied to it — we do not just deactivate or freeze it. A small set of data is kept for fraud prevention and legal reasons; exactly what, and why, is listed in <a href="#retention">Retention policy</a>.</p>
 
       <h2 id="third-party">Third-party services</h2>
-      <p>FinTrack relies on a small set of trusted providers to operate:</p>
+      <p>FinTrack relies on a small set of providers to operate:</p>
       <ul>
-        <li><strong>Google Firebase</strong> (Authentication, Cloud Firestore, Cloud Messaging) — account sign-in, data sync, cloud backup, and push notifications.</li>
-        <li><strong>Google Sign-In</strong> — optional one-tap sign-in using your Google account.</li>
-        <li><strong>Google AdMob</strong> — displays ads that help keep the free tier of FinTrack running.</li>
-        <li><strong>Google Play Billing</strong> — processes premium subscription purchases; FinTrack never sees your card details.</li>
+        <li><strong>Google Firebase</strong> (Authentication, Cloud Firestore, Cloud Functions, Cloud Messaging, App Check, Crashlytics) — sign-in, data sync, cloud backup, push notifications, abuse protection and crash reports.</li>
+        <li><strong>Google Sign-In</strong> — optional sign-in using your Google account.</li>
+        <li><strong>Google Play Billing &amp; Play Integrity</strong> — premium purchases (FinTrack never sees your card details) and device/app integrity checks.</li>
+        <li><strong>Google AdMob &amp; User Messaging Platform</strong> — ads on the free tier and the consent prompt shown where required.</li>
+        <li><strong>Google ML Kit (text recognition)</strong> — reads text from receipt images you choose to scan, on your device.</li>
+        <li><strong>freeRASP (Talsec)</strong> — app-security checks that detect tampering, rooting and similar threats.</li>
+        <li><strong>Gmail (Google)</strong> — used to send you account sign-in, verification and deletion-confirmation emails.</li>
+        <li><strong>Telegram</strong> — only if you choose to contact our support bot; Telegram processes that conversation under its own terms.</li>
       </ul>
-      <p>AI Insights are a notable exception to third-party processing: they are generated by a language model we operate ourselves, not by an external AI company — see <a href="#ai-insights">How AI insights work</a> for details.</p>
+      <p>AI Insights do not use a third-party AI provider — see <a href="#ai-insights">How AI insights work</a>.</p>
       <p>Each provider processes data under its own privacy terms in addition to this policy.</p>
 
       <h2 id="transfers">International data transfers</h2>
@@ -174,7 +194,13 @@
       <p>We do not sell your personal or financial data. We share data only with the service providers listed above, as needed to operate the app, or when required by law.</p>
 
       <h2 id="retention">Retention policy</h2>
-      <p>Your data — including your ledger, budgets, history, and your monthly AI insight summaries — is retained indefinitely for as long as your account is active, so that your full history and trends remain available to you. If you delete your account (see <a href="#deletion">Account &amp; data deletion</a>), associated personal data is permanently deleted, except for narrow categories we may be legally required to keep — such as billing records, or logs needed to investigate fraud, abuse, or security incidents — which are kept only as long as necessary for that purpose.</p>
+      <p>Your data — including your ledger, budgets, history and insights — is retained for as long as your account is active, so that your full history and trends remain available to you.</p>
+      <p>If you delete your account (see <a href="#deletion">Account &amp; data deletion</a>), your personal data is permanently deleted, except for this limited set, kept only for the stated purpose:</p>
+      <ul>
+        <li><strong>Fraud-prevention record</strong> — a keyed one-way hash of your email address, flags that a promotional offer or free trial was used, and your previous FinTrack ID and group letter. Purpose: stop repeated sign-ups with the same email from abusing promotions or free trials. It contains no plain-text email or name, the email cannot be recovered from it, and it is not shared or used for advertising.</li>
+        <li><strong>Purchase records</strong> — Google Play order and purchase-token identifiers, kept for refund verification, accounting and legal obligations.</li>
+        <li><strong>Security logs</strong> — logs needed to investigate fraud, abuse or security incidents, kept only as long as necessary.</li>
+      </ul>
 
       <h2 id="children">Children's privacy</h2>
       <p>FinTrack requires users to be at least 18 years old (see our <a href="terms.html#eligibility">Terms &amp; Conditions</a>), which is above the digital consent age in every jurisdiction we're aware of, including the EU/UK's GDPR (typically 13–16) and the US's COPPA (13). We do not knowingly collect data from children. If you believe a child has provided us with personal information, please contact us so we can remove it.</p>
@@ -232,7 +258,7 @@
   <div class="wrap">
     <div>
       <a class="brand" href="index.html">
-        <img src="assets/favicon.png" alt="" width="32" height="32">
+        <img src="assets/icon-64.png?v=20261003" alt="" width="32" height="32" decoding="async">
         FinTrack
       </a>
       <p class="tag">A smart finance manager built for every account, habit, and goal — organized, motivating, and yours.</p>
@@ -251,7 +277,7 @@
       <div class="footer-col">
         <h5>Help</h5>
         <a href="support.html">Support</a>
-        <a href="support.html#delete-account">Delete my account</a>
+        <a href="delete-account.html">Delete my account</a>
         <a href="mailto:support.fintrack.app@gmail.com">support.fintrack.app@gmail.com</a>
       </div>
     </div>
@@ -262,6 +288,6 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=20261003" defer></script>
 </body>
 </html>

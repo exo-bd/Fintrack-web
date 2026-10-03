@@ -43,9 +43,9 @@
   --line-light: rgba(11,21,48,0.10);
   --sky:        #4FC3F7;
 
-  --font-display: 'Sora', sans-serif;
-  --font-body:    'Inter', sans-serif;
-  --font-mono:    'JetBrains Mono', monospace;
+  --font-display: 'Sora', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:    ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; /* [PERF] JetBrains Mono webfont dropped (3 font files) */
   --max:   1120px;
   --radius: 22px;
 }
@@ -960,4 +960,24 @@ h1,h2,h3{ font-family:var(--font-display); margin:0; letter-spacing:-.02em; }
   background-size:200% 100%;
   animation:borderFlow 3s linear infinite;
   border-radius:20px 20px 0 0;
+}
+
+/* ==========================================================================
+   [PERF] Added in optimization pass
+   ========================================================================== */
+.btn-static{ cursor:default; }
+
+/* Skip layout/paint of below-the-fold sections until they approach the viewport */
+.flow, .steps, .features, .trust, .closing, .footer{
+  content-visibility:auto; contain-intrinsic-size:auto 640px;
+}
+
+/* Phones & low-power devices: heavy GPU effects (animated 72px blur, many
+   backdrop-filters) are the main cause of scroll jank — swap for flat fills. */
+@media (max-width: 880px){
+  .aurora{ filter:blur(36px); animation:none!important; }
+  .nav, .nav-links, .petal, .bloom-info-inner, .acct-card, .card, .cd-block, .chart-card, .float-card{
+    -webkit-backdrop-filter:none!important; backdrop-filter:none!important;
+  }
+  .nav{ background:rgba(7,7,26,0.96); }
 }

@@ -2,6 +2,25 @@
 (function(){
   "use strict";
 
+  // [PERF] Google Fonts loaded after first paint (was a render-blocking <link> on every page).
+  // font-display:swap in the font CSS keeps text visible meanwhile.
+  (function loadFonts(){
+    var l = document.createElement('link');
+    l.rel = 'stylesheet';
+    l.href = 'https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap';
+    document.head.appendChild(l);
+  })();
+
+  // [PERF] Ticker needs two identical sets for the seamless loop — clone instead of shipping the markup twice.
+  (function cloneTicker(){
+    var track = document.querySelector('.ticker-track');
+    if (track && track.children.length === 1){
+      var copy = track.firstElementChild.cloneNode(true);
+      copy.setAttribute('aria-hidden', 'true');
+      track.appendChild(copy);
+    }
+  })();
+
   // Mobile nav toggle
   var toggle = document.querySelector('.nav-toggle');
   var links  = document.querySelector('.nav-links');

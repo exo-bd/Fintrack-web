@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Delete your account &amp; data — FinTrack</title>
+<link rel="stylesheet" href="css/style.css?v=20261003">
+<meta name="description" content="How to delete your FinTrack account and data — in the app or from the web without the app. What is deleted and what is kept.">
+<meta name="theme-color" content="#07071A">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://YOUR-DOMAIN/delete-account.html">
+<link rel="icon" href="assets/favicon-32.png?v=20261003" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20261003">
+<meta property="og:site_name" content="FinTrack">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Delete your account &amp; data — FinTrack">
+<meta property="og:description" content="How to delete your FinTrack account and data — in the app or from the web without the app. What is deleted and what is kept.">
+<meta property="og:url" content="https://YOUR-DOMAIN/delete-account.html">
+<meta property="og:image" content="https://YOUR-DOMAIN/assets/og-image.png?v=20261003">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="FinTrack — every account, every habit, one app">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Fonts: stylesheet is injected by js/main.js after first paint (non-blocking, font-display: swap).
+     Pages stay fully readable with system fonts if JS is off. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600&display=swap"></noscript>
+</head>
+<body>
+<a class="skip-link" href="#doc-main">Skip to content</a>
+
+<div class="nav-sticky">
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="assets/icon-64.png?v=20261003" alt="" width="32" height="32" decoding="async">
+      FinTrack
+    </a>
+    <div class="nav-right">
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#features">Features</a>
+      <a href="support.html">Support</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-controls="navLinks" aria-expanded="false" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    </div><!-- /nav-right -->
+  </div>
+</header>
+</div><!-- /nav-sticky -->
+
+<section class="doc-hero">
+  <div class="wrap">
+    <span class="eyebrow">Help</span>
+    <h1>Delete your account &amp; data</h1>
+    <p class="updated">FinTrack · package com.fintrack.app</p>
+  </div>
+</section>
+
+<section class="doc-body" id="doc-main">
+  <div class="wrap doc-layout">
+    <nav class="toc" aria-label="Sections">
+      <h5>On this page</h5>
+      <a href="#in-app">In the app</a>
+      <a href="#from-web">Without the app</a>
+      <a href="#deleted">What is deleted</a>
+      <a href="#kept">What is kept, and why</a>
+    </nav>
+    <article class="doc">
+      <div class="callout-important">
+        <h3>Uninstalling the app does not delete your account</h3>
+        <p>Your account and data stay on our servers until you delete them using one of the options below.</p>
+      </div>
+
+      <h2 id="in-app">1) In the app (fastest)</h2>
+      <p>Open FinTrack → <strong>Settings → Account → Delete Account</strong>. We email a confirmation code to your account email; enter it to confirm and your account and data are deleted.</p>
+
+      <h2 id="from-web">2) Without the app</h2>
+      <p>If the app is uninstalled or you can't sign in, email us <strong>from the address you signed up with</strong>, with the subject <strong>"Delete my FinTrack account"</strong>. Including your FinTrack ID (shown on your profile, like <code>fintrack_A0000001</code>) helps us find it faster.</p>
+      <p><a class="btn btn-gold" href="mailto:support.fintrack.app@gmail.com?subject=Delete%20my%20FinTrack%20account&amp;body=Please%20delete%20my%20FinTrack%20account%20and%20all%20associated%20data.%0AFinTrack%20ID%20(optional):%20">Email deletion request</a>
+         <a class="btn btn-ghost" href="https://t.me/FinTrackSupportBot" rel="noopener">Telegram support</a></p>
+      <p class="muted">After verifying the request we normally finish within 7 business days, and no later than 30 days.</p>
+
+      <h2 id="deleted">What is deleted</h2>
+      <ul>
+        <li>Your profile and sign-in account (Firebase Authentication)</li>
+        <li>Transactions, budgets, accounts, debts and loans, recurring bills, reminders and to-dos</li>
+        <li>Cloud backups and synced receipt images</li>
+        <li>Points, streaks and reward progress, your referral code, and community submissions</li>
+      </ul>
+
+      <h2 id="kept">What is kept, and why</h2>
+      <table>
+        <thead><tr><th>Data</th><th>Purpose</th></tr></thead>
+        <tbody>
+          <tr><td>A one-way (keyed-hash) fingerprint of your email, flags that a promotional offer or free trial was used, and your previous FinTrack ID and group letter</td>
+              <td>Fraud prevention — stops repeated sign-ups with the same email from abusing promotions or free trials. It holds no plain-text email or name, and the email cannot be recovered from it.</td></tr>
+          <tr><td>Google Play purchase records (order / token IDs)</td><td>Refund verification, accounting and legal obligations.</td></tr>
+          <tr><td>Security logs</td><td>Investigating fraud, abuse or security incidents, kept only as long as necessary.</td></tr>
+        </tbody>
+      </table>
+      <p>This data is never sold, never shared for advertising, and is described in our <a href="privacy.html#retention">Privacy Policy</a>.</p>
+    </article>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="index.html">
+        <img src="assets/icon-64.png?v=20261003" alt="" width="32" height="32" decoding="async">
+        FinTrack
+      </a>
+      <p class="tag">A smart finance manager built for every account, habit, and goal — organized, motivating, and yours.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Product</h5>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#features">Features</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+      </div>
+      <div class="footer-col">
+        <h5>Help</h5>
+        <a href="support.html">Support</a>
+        <a href="delete-account.html">Delete my account</a>
+        <a href="mailto:support.fintrack.app@gmail.com">support.fintrack.app@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span data-year>2026</span> FinTrack. All rights reserved.</span>
+    <span>com.fintrack.app</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=20261003" defer></script>
+</body>
+</html>
