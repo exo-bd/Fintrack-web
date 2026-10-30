@@ -57,7 +57,7 @@
   <div class="wrap">
     <span class="eyebrow">Legal</span>
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective date: 01 November, 2026 · Last updated: 30 October, 2026</p>
+    <p class="updated">Effective date: 01 December, 2026 · Last updated: 30 October, 2026</p>
   </div>
 </section>
 
@@ -107,10 +107,11 @@
         <li><strong>Voice input</strong> — audio captured only while you actively use voice entry to add a transaction by speaking. It is converted to text by your device's speech-recognition service (provided by Google or your device maker, which may process audio online depending on your device settings). FinTrack does not store the audio.</li>
         <li><strong>Biometric data</strong> — handled entirely by your device's operating system to unlock the app. FinTrack never receives or stores your fingerprint or face data.</li>
         <li><strong>AI insight summary data</strong> — once a month, an aggregated summary of your activity (such as total income, total expenses, savings amount, and the percentage of spending in each category) is generated and stored, as described in <a href="#ai-insights">How AI insights work</a> below. This summary never includes your individual transactions, merchant names, account numbers, or notes.</li>
-        <li><strong>Community insights data</strong> — for Premium users, a small monthly summary of ratios and ranges (never amounts or names), as described in <a href="#community-data">Community insights &amp; leaderboard</a>.</li>
+        <li><strong>Community insights data</strong> — for every signed-in user on any plan, a small monthly summary of ratios and ranges (never amounts or names), as described in <a href="#community-data">Community insights &amp; leaderboard</a>.</li>
         <li><strong>Help-assistant questions</strong> — if the in-app assistant cannot answer a question you type, that question text and your app language are saved, as described in <a href="#support-data">Help assistant &amp; bug reports</a>.</li>
         <li><strong>Bug reports</strong> — the description, optional contact email and technical details you choose to send when you report a problem, as described in <a href="#support-data">Help assistant &amp; bug reports</a>.</li>
         <li><strong>Gamification &amp; reward data</strong> — Star Points and their history, streaks and streak freezes, levels, and reward progress generated from your in-app activity, plus your referral code and the number of people who used it.</li>
+        <li><strong>Security logs</strong> — when you register, request an email verification code, apply a referral code or send a bug report, our servers write a log entry containing the event type, your account ID and a one-way hash of your IP address (the raw IP address is not logged). We use these only to spot abuse, with manual review and no automatic blocking.</li>
         <li><strong>Notification token</strong> — a push-notification token for your device, used only to deliver notifications you have enabled.</li>
         <li><strong>Device &amp; diagnostic data</strong> — basic technical information (device model, OS version, crash logs via Firebase Crashlytics) used to keep the app stable, plus device-integrity signals used to detect tampered or unsafe environments.</li>
         <li><strong>Fraud-prevention record</strong> — when you register, we create a record keyed by a one-way (keyed-hash) fingerprint of your email address, with flags showing whether a promotional offer or free trial was used and your assigned FinTrack ID and group letter. It contains no plain-text email or name and is kept after account deletion — see <a href="#retention">Retention policy</a>.</li>
@@ -125,7 +126,7 @@
         <li>To sync your data securely across your own devices when you're signed in, and back it up to the cloud.</li>
         <li>To generate your monthly AI insight by analyzing an aggregated summary of your activity — see <a href="#ai-insights">How AI insights work</a> for exactly what this involves.</li>
         <li>To send budget alerts, bill reminders, and reward notifications you've enabled.</li>
-        <li>To show you anonymous Community comparisons and your percentile rank (Premium), built from monthly summaries that contain only ratios and ranges.</li>
+        <li>To show you anonymous Community comparisons and your percentile rank, built from monthly summaries that contain only ratios and ranges.</li>
         <li>To answer your questions in the help assistant, improve its FAQ from questions it could not answer, and investigate the bug reports you send us.</li>
         <li>To run Star Points, streaks, challenges and referral rewards.</li>
         <li>To detect and prevent fraud, abuse, or technical issues.</li>
@@ -144,20 +145,20 @@
       <p>Your data, including insights, is retained for as long as your account is active — see <a href="#retention">Retention policy</a>.</p>
 
       <h2 id="community-data">Community insights &amp; leaderboard</h2>
-      <p>Community insights shows how your savings and spending habits compare with other FinTrack users. It is available to Premium users, including free-trial and promotional access; for Basic users nothing is uploaded or fetched. FinTrack has no public profiles, posts, comments or chat — other users never see your name, photo or any of your data.</p>
+      <p>Community insights shows how your savings and spending habits compare with other FinTrack users. Your monthly summary is included for every signed-in user, whichever plan you are on (Basic, Promo or Premium). FinTrack has no public profiles, posts, comments or chat — other users never see your name, photo or any of your data.</p>
       <ul>
         <li><strong>What is sent.</strong> Once a month, in the first days of the new month, FinTrack uploads a small summary of the previous month: your savings rate and expense-to-income ratio, the share of your spending in each category (as percentages), your number of transactions, how your income changed compared with the month before (as a percentage), your app version, a timestamp, and a range label — for example an income range and, if you track net worth, a net-worth range — used to group you with similar users.</li>
         <li><strong>What is never sent.</strong> Amounts, balances, individual transactions, merchant names, notes, your name, email or photo, and the actual income or net-worth figures behind the range labels.</li>
         <li><strong>How it is stored.</strong> The summary is saved under your account ID, so we can tell whether you have already submitted for the month and so that only you can read your own submission. Your account ID is not repeated inside the summary itself.</li>
         <li><strong>How it is used.</strong> Our backend combines many users’ summaries into community averages and percentile figures, which signed-in users can read. You see only those aggregated figures and where you rank as a percentile — never another person’s data.</li>
-        <li><strong>Leaderboard badge.</strong> Premium users also see a badge showing roughly where their savings rate falls among other users. It shows only a percentile, with no names.</li>
+        <li><strong>Leaderboard badge.</strong> A badge shows roughly where your savings rate falls among other users. It shows only a percentile, with no names.</li>
       </ul>
       <p>You can contact us at any time using the details in <a href="#contact">Contact us</a> to ask about, or object to, the use of your Community summaries.</p>
 
       <h2 id="support-data">Help assistant &amp; bug reports</h2>
       <ul>
         <li><strong>Help assistant.</strong> The in-app assistant answers how-to questions from an FAQ built into the app. If it cannot answer something you type, that question (3–200 characters) and your app language are saved on your device and, when you are signed in, backed up with your other account data. We may review these unanswered questions to improve the FAQ. Please do not type passwords, card numbers or other sensitive details into the assistant.</li>
-        <li><strong>Bug reports.</strong> If you send a report from Settings → Support, FinTrack sends the description you wrote, an optional contact email if you give one, your app version and build number, your Android version and your app language to our servers. Our server adds your FinTrack ID, group letter and user type from your account. Reports are readable only by us, and you can send one report every 24 hours.</li>
+        <li><strong>Bug reports.</strong> If you send a report from Settings → Support, FinTrack sends the description you wrote, an optional contact email if you give one, your app version and build number, your Android version and your app language to our servers. Our server also attaches your account ID, FinTrack ID, group letter, user type and sign-in email from your account. Reports are readable only by us, are deleted when you delete your account, and you can send one report every 24 hours.</li>
       </ul>
 
       <h2 id="permissions">Permissions we request</h2>
@@ -194,6 +195,7 @@
         <li><strong>In the app:</strong> go to Settings → Account → Delete Account, and confirm with the code we email you.</li>
         <li><strong>From the web, without the app:</strong> visit our <a href="delete-account.html">account deletion page</a> — useful if you've already uninstalled FinTrack.</li>
       </ul>
+      <p><strong>Delete My Data (keep your account).</strong> From your Profile you can instead erase only your financial data — transactions, budgets, debts, accounts, net-worth entries and similar — while keeping your account, profile, Premium status and Star Points. This is also confirmed with a code we email you, and can be used once every 24 hours.</p>
       <p>Once verified, we permanently delete your account and the personal data tied to it — we do not just deactivate or freeze it. A small set of data is kept for fraud prevention and legal reasons; exactly what, and why, is listed in <a href="#retention">Retention policy</a>.</p>
 
       <h2 id="third-party">Third-party services</h2>
