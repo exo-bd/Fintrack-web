@@ -21,8 +21,8 @@
 var FINTRACK_CONFIG = {
 
   // ── Launch date ──────────────────────────────────────────────────────────
-  LAUNCH_DATE:    '2026-11-01T00:00:00Z',  // ← শুধু এই ৩ লাইন বদলান
-  LAUNCH_DISPLAY: '01 November 2026',
-  LAUNCH_SHORT:   '01 Nov 2026',
+  LAUNCH_DATE:    '2026-12-01T00:00:00Z',  // ← শুধু এই ৩ লাইন বদলান
+  LAUNCH_DISPLAY: '01 December 2026',
+  LAUNCH_SHORT:   '01 Dec 2026',
 
 };

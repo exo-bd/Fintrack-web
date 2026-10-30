@@ -8,15 +8,15 @@
 <meta name="description" content="How FinTrack collects, uses, and protects your data, including account, camera, AI insight, and biometric permissions.">
 <meta name="theme-color" content="#07071A">
 <meta name="color-scheme" content="dark">
-<link rel="canonical" href="https://YOUR-DOMAIN/privacy.html">
+<link rel="canonical" href="https://fintrack-lab.web.app/privacy.html">
 <link rel="icon" href="assets/favicon-32.png?v=20261003" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20261003">
 <meta property="og:site_name" content="FinTrack">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Privacy Policy — FinTrack">
 <meta property="og:description" content="How FinTrack collects, uses, and protects your data, including account, camera, AI insight, and biometric permissions.">
-<meta property="og:url" content="https://YOUR-DOMAIN/privacy.html">
-<meta property="og:image" content="https://YOUR-DOMAIN/assets/og-image.png?v=20261003">
+<meta property="og:url" content="https://fintrack-lab.web.app/privacy.html">
+<meta property="og:image" content="https://fintrack-lab.web.app/assets/og-image.png?v=20261003">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="FinTrack — every account, every habit, one app">
@@ -108,7 +108,9 @@
         <li><strong>Gamification &amp; reward data</strong> — points, streaks, levels, and reward progress generated from your in-app activity.</li>
         <li><strong>Device &amp; diagnostic data</strong> — basic technical information (device model, OS version, crash logs via Firebase Crashlytics) used to keep the app stable, plus device-integrity signals used to detect tampered or unsafe environments.</li>
         <li><strong>Fraud-prevention record</strong> — when you register, we create a record keyed by a one-way (keyed-hash) fingerprint of your email address, with flags showing whether a promotional offer or free trial was used and your assigned FinTrack ID and group letter. It contains no plain-text email or name and is kept after account deletion — see <a href="#retention">Retention policy</a>.</li>
+        <!-- [IAP-FLAG-01] Payment বন্ধ — এখন কোনো purchase record তৈরি হয় না। payment চালু হলে নিচের লাইন ফিরিয়ে আনুন:
         <li><strong>Purchase records</strong> — Google Play order and purchase-token identifiers for premium purchases (we never see your card details).</li>
+        -->
       </ul>
 
       <h2 id="use">How we use your information</h2>
@@ -144,8 +146,8 @@
           <tr><td class="mono">USE_BIOMETRIC</td><td>Lock the app behind your fingerprint or face unlock.</td></tr>
           <tr><td class="mono">POST_NOTIFICATIONS</td><td>Send budget alerts, bill reminders, and reward notifications.</td></tr>
           <tr><td class="mono">RECEIVE_BOOT_COMPLETED</td><td>Restore your scheduled reminders after your device restarts.</td></tr>
-          <tr><td class="mono">INTERNET</td><td>Sign in, sync your ledger to your account, and process premium purchases.</td></tr>
-          <tr><td class="mono">AD_ID</td><td>Lets Google AdMob use your Android advertising ID to show and measure ads on the free tier. You can reset or delete it in Android Settings → Google → Ads.</td></tr>
+          <tr><td class="mono">INTERNET</td><td>Sign in, sync your ledger to your account, load ads, and redeem Star Points for Premium.</td></tr>
+          <tr><td class="mono">AD_ID</td><td>Lets our ad partners (Google AdMob and Unity Ads) use your Android advertising ID to show and measure ads on the free tier. You can reset or delete it in Android Settings → Google → Ads.</td></tr>
           <tr><td class="mono">WAKE_LOCK / VIBRATE</td><td>Let scheduled background sync and reminders finish reliably, and give haptic feedback.</td></tr>
         </tbody>
       </table>
@@ -173,7 +175,11 @@
       <ul>
         <li><strong>Google Firebase</strong> (Authentication, Cloud Firestore, Cloud Functions, Cloud Messaging, App Check, Crashlytics) — sign-in, data sync, cloud backup, push notifications, abuse protection and crash reports.</li>
         <li><strong>Google Sign-In</strong> — optional sign-in using your Google account.</li>
-        <li><strong>Google Play Billing &amp; Play Integrity</strong> — premium purchases (FinTrack never sees your card details) and device/app integrity checks.</li>
+        <li><strong>Google Play Integrity</strong> — device and app integrity checks that help protect your account and our services from abuse.</li>
+        <!-- [IAP-FLAG-01] payment চালু হলে ফিরিয়ে আনুন, আর উপরের Play Integrity লাইনটা আগের মতো "Google Play Billing &amp; Play Integrity" করুন:
+        <li><strong>Google Play Billing</strong> — premium purchases (FinTrack never sees your card details).</li>
+        -->
+        <li><strong>Unity Ads (Unity Technologies)</strong> — an additional ad network used to show ads, including rewarded videos, on the free tier. It may process your advertising ID, IP address, device information and ad interactions to deliver and measure ads. See <a href="https://unity.com/legal/privacy-policy" rel="noopener">Unity’s privacy policy</a>.</li>
         <li><strong>Google AdMob &amp; User Messaging Platform</strong> — ads on the free tier and the consent prompt shown where required.</li>
         <li><strong>Google ML Kit (text recognition)</strong> — reads text from receipt images you choose to scan, on your device.</li>
         <li><strong>freeRASP (Talsec)</strong> — app-security checks that detect tampering, rooting and similar threats.</li>
@@ -188,7 +194,7 @@
       <p>Where required by applicable law (for example, the GDPR for EEA/UK residents), such transfers rely on appropriate safeguards, such as standard contractual clauses or other mechanisms recognized as providing an adequate level of protection. By using FinTrack, you understand that your data may be processed outside your country of residence as described here.</p>
 
       <h2 id="ads">Advertising</h2>
-      <p>FinTrack shows ads through Google AdMob on free-tier screens. Depending on your region and consent choices, ads may be personalized or non-personalized. You can manage ad personalization in your device's Google Settings, and remove ads entirely with a premium subscription.</p>
+      <p>FinTrack shows ads through Google AdMob and Unity Ads on free-tier screens. Depending on your region and consent choices, ads may be personalized or non-personalized. You can manage ad personalization in your device's Google Settings, and remove ads entirely with a premium subscription.</p>
 
       <h2 id="sharing">Data sharing &amp; disclosure</h2>
       <p>We do not sell your personal or financial data. We share data only with the service providers listed above, as needed to operate the app, or when required by law.</p>
@@ -198,7 +204,9 @@
       <p>If you delete your account (see <a href="#deletion">Account &amp; data deletion</a>), your personal data is permanently deleted, except for this limited set, kept only for the stated purpose:</p>
       <ul>
         <li><strong>Fraud-prevention record</strong> — a keyed one-way hash of your email address, flags that a promotional offer or free trial was used, and your previous FinTrack ID and group letter. Purpose: stop repeated sign-ups with the same email from abusing promotions or free trials. It contains no plain-text email or name, the email cannot be recovered from it, and it is not shared or used for advertising.</li>
+        <!-- [IAP-FLAG-01] payment চালু হলে ফিরিয়ে আনুন:
         <li><strong>Purchase records</strong> — Google Play order and purchase-token identifiers, kept for refund verification, accounting and legal obligations.</li>
+        -->
         <li><strong>Security logs</strong> — logs needed to investigate fraud, abuse or security incidents, kept only as long as necessary.</li>
       </ul>
 
@@ -230,7 +238,7 @@
       <h3>California, USA (CCPA / CPRA)</h3>
       <ul>
         <li>The categories of personal information we collect are described in <a href="#collect">Information we collect</a> above — including identifiers, financial information, commercial information, and audio/visual information you provide (such as voice input or receipt photos).</li>
-        <li>We do not sell personal information for money. Displaying personalized ads through Google AdMob may be considered "sharing" for cross-context behavioral advertising under the CCPA/CPRA; you can opt out by turning off ad personalization in your device's Google Settings, or by contacting us to opt out of personalized ads entirely.</li>
+        <li>We do not sell personal information for money. Displaying personalized ads through Google AdMob or Unity Ads may be considered "sharing" for cross-context behavioral advertising under the CCPA/CPRA; you can opt out by turning off ad personalization in your device's Google Settings, or by contacting us to opt out of personalized ads entirely.</li>
         <li>You have the right to know, delete, and correct your personal information, and the right to non-discrimination for exercising any of these rights.</li>
         <li>An authorized agent may submit a request on your behalf with proof of authorization.</li>
       </ul>
