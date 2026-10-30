@@ -8,100 +8,145 @@
   var rM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  /* ── ১) Hero network — node = account, ছুটন্ত বিন্দু = transaction ─────── */
+  /* ── ১) Hero spider web — মাউস নড়লে জালের সুতো কাছের node-এ টানে ──────────
+   * node = account, ছুটন্ত বিন্দু = transaction। জালের কোণা hero-র চার কোণায় আটকানো (anchor),
+   * cursor থেকে কাছের node পর্যন্ত সুতো টানে, আর mouse না থাকলে (বা touch ডিভাইসে)
+   * অদৃশ্য cursor নিজে নিজে ঘুরে জালকে নড়ায়। */
   (function heroNet(){
     var cv = $('#heroNet');
     if (!cv || !cv.getContext) return;
     var hero = cv.parentElement, ctx = cv.getContext('2d');
-    var w = 0, h = 0, dpr = 1, nodes = [], packets = [];
-    var mouse = { x: -9999, y: -9999 }, raf = 0, visible = true;
-    var LINK = 150, COLORS = ['#00D4FF', '#9D6BFF', '#FFB547'];
+    var w = 0, h = 0, dpr = 1, nodes = [], anchors = [], all = [], packets = [];
+    var mouse = { x: 0, y: 0, on: false }, cur = { x: -9999, y: -9999 };
+    var lastMove = 0, raf = 0, visible = false;
+    var R = 230, LINK = 140, COLORS = ['#00D4FF', '#9D6BFF', '#FFB547'];
 
-    function seed(){
-      var n = Math.round(Math.min(46, Math.max(16, (w * h) / 26000)));
-      nodes = []; packets = [];
-      for (var i = 0; i < n; i++){
-        nodes.push({
-          x: Math.random() * w, y: Math.random() * h,
-          vx: (Math.random() - .5) * .28, vy: (Math.random() - .5) * .28,
-          r: 1.3 + Math.random() * 1.6, hub: i % 9 === 0
-        });
-      }
-    }
-    function size(){
-      var r = hero.getBoundingClientRect();
+    function build(){
+      var r = hero.getBoundingClientRect(), i;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       w = r.width; h = r.height;
       cv.width = w * dpr; cv.height = h * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      seed(); draw(false);
+      var n = Math.round(Math.min(80, Math.max(24, (w * h) / 12000)));
+      nodes = []; packets = [];
+      for (i = 0; i < n; i++){
+        var bx = Math.random() * w, by = Math.random() * h;
+        nodes.push({ bx: bx, by: by, x: bx, y: by, ph: Math.random() * 6.28,
+                     sp: .0006 + Math.random() * .0008, amp: 8 + Math.random() * 16,
+                     r: 1.1 + Math.random() * 1.5, hub: i % 9 === 0 });
+      }
+      // জালের স্থির কোণা: hero-র চার কোণা + চার পাশের মাঝখান
+      anchors = [];
+      [[0, 0], [.5, 0], [1, 0], [0, .5], [1, .5], [0, 1], [.5, 1], [1, 1]].forEach(function(a){
+        anchors.push({ x: a[0] * w, y: a[1] * h, r: 2, fixed: true });
+      });
+      all = nodes.concat(anchors);
+      if (cur.x < -9000){ cur.x = w / 2; cur.y = h / 2; }
     }
+
     function spawnPacket(){
-      if (packets.length > 14) return;
+      if (packets.length > 12) return;
       var a = (Math.random() * nodes.length) | 0, b = (Math.random() * nodes.length) | 0;
       if (a === b) return;
       var dx = nodes[a].x - nodes[b].x, dy = nodes[a].y - nodes[b].y;
       if (dx * dx + dy * dy > LINK * LINK) return;
       packets.push({ a: a, b: b, t: 0, s: .012 + Math.random() * .012, c: COLORS[(Math.random() * 3) | 0] });
     }
-    function draw(move){
+
+    function frame(t, animate){
       ctx.clearRect(0, 0, w, h);
-      var i, j, n = nodes.length, p, q, dx, dy, d, al;
-      if (move){
-        for (i = 0; i < n; i++){
-          p = nodes[i]; p.x += p.vx; p.y += p.vy;
-          if (p.x < 0 || p.x > w) p.vx *= -1;
-          if (p.y < 0 || p.y > h) p.vy *= -1;
-        }
-        if (Math.random() < .08) spawnPacket();
-      }
-      ctx.lineWidth = 1;
-      for (i = 0; i < n; i++){
+      var i, j, p, q, dx, dy, d, a;
+      // mouse না থাকলে / ২.৮ সেকেন্ড স্থির থাকলে / touch ডিভাইসে — নিজে নিজে ঘুরে বেড়ানো cursor
+      var idle = !mouse.on || (t - lastMove > 2800);
+      var tx = idle ? w * (.5 + .36 * Math.sin(t * .00031)) : mouse.x;
+      var ty = idle ? h * (.45 + .30 * Math.sin(t * .00043 + 1)) : mouse.y;
+      if (!animate){ tx = ty = -9999; cur.x = cur.y = -9999; }
+      else { cur.x += (tx - cur.x) * .12; cur.y += (ty - cur.y) * .12; }
+
+      for (i = 0; i < nodes.length; i++){
         p = nodes[i];
-        for (j = i + 1; j < n; j++){
-          q = nodes[j]; dx = p.x - q.x; dy = p.y - q.y; d = Math.sqrt(dx * dx + dy * dy);
-          if (d > LINK) continue;
-          var mx = (p.x + q.x) / 2 - mouse.x, my = (p.y + q.y) / 2 - mouse.y;
-          var near = Math.sqrt(mx * mx + my * my) < 170;
-          al = (1 - d / LINK) * (near ? .6 : .26);
-          ctx.strokeStyle = near ? 'rgba(0,212,255,' + al + ')' : 'rgba(124,58,255,' + al + ')';
+        var gx = p.bx + Math.cos(t * p.sp + p.ph) * p.amp, gy = p.by + Math.sin(t * p.sp * 1.3 + p.ph) * p.amp;
+        dx = cur.x - gx; dy = cur.y - gy; d = Math.sqrt(dx * dx + dy * dy);
+        if (d < R){ var f = (1 - d / R) * .32; gx += dx * f; gy += dy * f; } // কাছে এলে cursor-এর দিকে টানে
+        p.x += (gx - p.x) * .1; p.y += (gy - p.y) * .1;
+      }
+      if (animate && Math.random() < .08) spawnPacket();
+
+      // — ambient জাল —
+      ctx.lineWidth = 1;
+      for (i = 0; i < all.length; i++){
+        p = all[i];
+        for (j = i + 1; j < all.length; j++){
+          q = all[j];
+          if (p.fixed && q.fixed) continue;
+          dx = p.x - q.x; dy = p.y - q.y; d = Math.sqrt(dx * dx + dy * dy);
+          var L = (p.fixed || q.fixed) ? LINK * 1.5 : LINK; // anchor-এর সুতো একটু লম্বা
+          if (d > L) continue;
+          var mx = (p.x + q.x) / 2 - cur.x, my = (p.y + q.y) / 2 - cur.y;
+          var near = Math.sqrt(mx * mx + my * my) < R * .8;
+          a = (1 - d / L) * (near ? .55 : .2);
+          ctx.strokeStyle = near ? 'rgba(0,212,255,' + a + ')' : 'rgba(124,58,255,' + a + ')';
           ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
         }
       }
+
+      // — ছুটন্ত transaction বিন্দু —
       for (i = packets.length - 1; i >= 0; i--){
         var k = packets[i], A = nodes[k.a], B = nodes[k.b];
         dx = A.x - B.x; dy = A.y - B.y;
         if (dx * dx + dy * dy > (LINK + 20) * (LINK + 20)){ packets.splice(i, 1); continue; }
-        if (move) k.t += k.s;
+        if (animate) k.t += k.s;
         if (k.t >= 1){ packets.splice(i, 1); continue; }
         var x = A.x + (B.x - A.x) * k.t, y = A.y + (B.y - A.y) * k.t;
         ctx.fillStyle = k.c; ctx.shadowColor = k.c; ctx.shadowBlur = 12;
         ctx.beginPath(); ctx.arc(x, y, 2.2, 0, 6.2832); ctx.fill(); ctx.shadowBlur = 0;
       }
-      for (i = 0; i < n; i++){
+
+      // — node-গুলো —
+      for (i = 0; i < nodes.length; i++){
         p = nodes[i];
         ctx.fillStyle = p.hub ? 'rgba(0,212,255,.9)' : 'rgba(200,200,235,.5)';
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.hub ? p.r + 1.4 : p.r, 0, 6.2832); ctx.fill();
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.hub ? p.r + 1.3 : p.r, 0, 6.2832); ctx.fill();
         if (p.hub){
           ctx.strokeStyle = 'rgba(0,212,255,.3)';
           ctx.beginPath(); ctx.arc(p.x, p.y, p.r + 6, 0, 6.2832); ctx.stroke();
         }
       }
+
+      // — cursor থেকে কাছের node পর্যন্ত সুতো —
+      for (i = 0; i < all.length; i++){
+        p = all[i]; dx = p.x - cur.x; dy = p.y - cur.y; d = Math.sqrt(dx * dx + dy * dy);
+        if (d < R){
+          a = (1 - d / R);
+          ctx.strokeStyle = 'rgba(0,212,255,' + (a * .65) + ')';
+          ctx.beginPath(); ctx.moveTo(cur.x, cur.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+          ctx.fillStyle = 'rgba(0,212,255,' + (.3 + a * .6) + ')';
+          ctx.beginPath(); ctx.arc(p.x, p.y, p.r + a * 1.8, 0, 6.2832); ctx.fill();
+        }
+      }
+      if (animate){
+        ctx.strokeStyle = 'rgba(0,212,255,.55)';
+        ctx.beginPath(); ctx.arc(cur.x, cur.y, 7, 0, 6.2832); ctx.stroke();
+        ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(cur.x, cur.y, 2, 0, 6.2832); ctx.fill();
+      }
     }
-    function loop(){ draw(true); raf = requestAnimationFrame(loop); }
+
+    function loop(t){ frame(t, true); raf = requestAnimationFrame(loop); }
     function start(){ if (!raf && visible && !document.hidden && !rM) raf = requestAnimationFrame(loop); }
     function stop(){ if (raf){ cancelAnimationFrame(raf); raf = 0; } }
 
-    size();
-    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(size, 150); });
-    if (rM) return; // static frame-ই যথেষ্ট
-    hero.addEventListener('mousemove', function(e){
-      var r = hero.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+    build(); frame(0, false);
+    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ build(); frame(0, false); }, 150); });
+    window.addEventListener('load', function(){ setTimeout(function(){ build(); frame(0, false); }, 400); });
+    if (rM) return; // motion-কমানো ব্যবহারকারীর জন্য শুধু static frame
+    hero.addEventListener('pointermove', function(e){
+      var r = hero.getBoundingClientRect();
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; mouse.on = true; lastMove = performance.now();
     }, { passive: true });
-    hero.addEventListener('mouseleave', function(){ mouse.x = mouse.y = -9999; });
+    hero.addEventListener('pointerleave', function(){ mouse.on = false; });
     if ('IntersectionObserver' in window){
       new IntersectionObserver(function(en){ visible = en[0].isIntersecting; visible ? start() : stop(); }).observe(hero);
-    }
+    } else { visible = true; }
     document.addEventListener('visibilitychange', function(){ document.hidden ? stop() : start(); });
     start();
   })();
