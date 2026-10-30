@@ -57,7 +57,7 @@
   <div class="wrap">
     <span class="eyebrow">Legal</span>
     <h1>Privacy Policy</h1>
-    <p class="updated">Effective date: 01 November, 2026</p>
+    <p class="updated">Effective date: 01 November, 2026 · Last updated: 30 October, 2026</p>
   </div>
 </section>
 
@@ -70,6 +70,8 @@
       <a href="#collect">Information we collect</a>
       <a href="#use">How we use it</a>
       <a href="#ai-insights">How AI insights work</a>
+      <a href="#community-data">Community insights &amp; leaderboard</a>
+      <a href="#support-data">Help assistant &amp; bug reports</a>
       <a href="#permissions">Permissions we request</a>
       <a href="#storage">Storage &amp; security</a>
       <a href="#deletion">Account &amp; data deletion</a>
@@ -99,13 +101,17 @@
       <ul>
         <li><strong>Account information</strong> — your name, email address, and profile photo, when you sign in with Google or create an account, via Firebase Authentication.</li>
         <li><strong>Multiple accounts</strong> — the names, types (such as cash, bank, or mobile wallet), and balances for each account you set up to track.</li>
-        <li><strong>Financial data you create</strong> — transactions, budgets, categories, debts, recurring bills, to-do items, and notes, whether entered manually or scanned from a receipt.</li>
+        <li><strong>Financial data you create</strong> — transactions, budgets and savings goals, categories, debts and debt payments, recurring bills, reminders, to-do items, wishlist items, price-tracker items and the prices you log, net-worth investments and manual assets, and notes — whether entered manually, spoken, or scanned from a receipt.</li>
+        <li><strong>Data that stays on your device</strong> — your FIRE-planner settings, cash-check results and daily/weekly challenge progress are stored only on your device and are not uploaded to our servers. The loan/EMI calculator works only with the numbers you type into it and is not connected to your account data.</li>
         <li><strong>Camera and photos</strong> — receipt images you choose to scan or photos you choose to attach, processed to extract amounts and dates.</li>
         <li><strong>Voice input</strong> — audio captured only while you actively use voice entry to add a transaction by speaking. It is converted to text by your device's speech-recognition service (provided by Google or your device maker, which may process audio online depending on your device settings). FinTrack does not store the audio.</li>
         <li><strong>Biometric data</strong> — handled entirely by your device's operating system to unlock the app. FinTrack never receives or stores your fingerprint or face data.</li>
         <li><strong>AI insight summary data</strong> — once a month, an aggregated summary of your activity (such as total income, total expenses, savings amount, and the percentage of spending in each category) is generated and stored, as described in <a href="#ai-insights">How AI insights work</a> below. This summary never includes your individual transactions, merchant names, account numbers, or notes.</li>
-        <li><strong>Community activity</strong> — your display name and any posts, comments, or progress you choose to share are visible to other users inside the Community feature.</li>
-        <li><strong>Gamification &amp; reward data</strong> — points, streaks, levels, and reward progress generated from your in-app activity.</li>
+        <li><strong>Community insights data</strong> — for Premium users, a small monthly summary of ratios and ranges (never amounts or names), as described in <a href="#community-data">Community insights &amp; leaderboard</a>.</li>
+        <li><strong>Help-assistant questions</strong> — if the in-app assistant cannot answer a question you type, that question text and your app language are saved, as described in <a href="#support-data">Help assistant &amp; bug reports</a>.</li>
+        <li><strong>Bug reports</strong> — the description, optional contact email and technical details you choose to send when you report a problem, as described in <a href="#support-data">Help assistant &amp; bug reports</a>.</li>
+        <li><strong>Gamification &amp; reward data</strong> — Star Points and their history, streaks and streak freezes, levels, and reward progress generated from your in-app activity, plus your referral code and the number of people who used it.</li>
+        <li><strong>Notification token</strong> — a push-notification token for your device, used only to deliver notifications you have enabled.</li>
         <li><strong>Device &amp; diagnostic data</strong> — basic technical information (device model, OS version, crash logs via Firebase Crashlytics) used to keep the app stable, plus device-integrity signals used to detect tampered or unsafe environments.</li>
         <li><strong>Fraud-prevention record</strong> — when you register, we create a record keyed by a one-way (keyed-hash) fingerprint of your email address, with flags showing whether a promotional offer or free trial was used and your assigned FinTrack ID and group letter. It contains no plain-text email or name and is kept after account deletion — see <a href="#retention">Retention policy</a>.</li>
         <!-- [IAP-FLAG-01] Payment বন্ধ — এখন কোনো purchase record তৈরি হয় না। payment চালু হলে নিচের লাইন ফিরিয়ে আনুন:
@@ -119,7 +125,9 @@
         <li>To sync your data securely across your own devices when you're signed in, and back it up to the cloud.</li>
         <li>To generate your monthly AI insight by analyzing an aggregated summary of your activity — see <a href="#ai-insights">How AI insights work</a> for exactly what this involves.</li>
         <li>To send budget alerts, bill reminders, and reward notifications you've enabled.</li>
-        <li>To power Community features, such as displaying your name and shared progress to other users.</li>
+        <li>To show you anonymous Community comparisons and your percentile rank (Premium), built from monthly summaries that contain only ratios and ranges.</li>
+        <li>To answer your questions in the help assistant, improve its FAQ from questions it could not answer, and investigate the bug reports you send us.</li>
+        <li>To run Star Points, streaks, challenges and referral rewards.</li>
         <li>To detect and prevent fraud, abuse, or technical issues.</li>
         <li>To improve app stability and performance.</li>
       </ul>
@@ -134,6 +142,23 @@
         <li><strong>4. Not financial advice.</strong> Insights are a starting point for reflection. If we ever change how insights are produced, we will update this section before the change takes effect.</li>
       </ul>
       <p>Your data, including insights, is retained for as long as your account is active — see <a href="#retention">Retention policy</a>.</p>
+
+      <h2 id="community-data">Community insights &amp; leaderboard</h2>
+      <p>Community insights shows how your savings and spending habits compare with other FinTrack users. It is available to Premium users, including free-trial and promotional access; for Basic users nothing is uploaded or fetched. FinTrack has no public profiles, posts, comments or chat — other users never see your name, photo or any of your data.</p>
+      <ul>
+        <li><strong>What is sent.</strong> Once a month, in the first days of the new month, FinTrack uploads a small summary of the previous month: your savings rate and expense-to-income ratio, the share of your spending in each category (as percentages), your number of transactions, how your income changed compared with the month before (as a percentage), your app version, a timestamp, and a range label — for example an income range and, if you track net worth, a net-worth range — used to group you with similar users.</li>
+        <li><strong>What is never sent.</strong> Amounts, balances, individual transactions, merchant names, notes, your name, email or photo, and the actual income or net-worth figures behind the range labels.</li>
+        <li><strong>How it is stored.</strong> The summary is saved under your account ID, so we can tell whether you have already submitted for the month and so that only you can read your own submission. Your account ID is not repeated inside the summary itself.</li>
+        <li><strong>How it is used.</strong> Our backend combines many users’ summaries into community averages and percentile figures, which signed-in users can read. You see only those aggregated figures and where you rank as a percentile — never another person’s data.</li>
+        <li><strong>Leaderboard badge.</strong> Premium users also see a badge showing roughly where their savings rate falls among other users. It shows only a percentile, with no names.</li>
+      </ul>
+      <p>You can contact us at any time using the details in <a href="#contact">Contact us</a> to ask about, or object to, the use of your Community summaries.</p>
+
+      <h2 id="support-data">Help assistant &amp; bug reports</h2>
+      <ul>
+        <li><strong>Help assistant.</strong> The in-app assistant answers how-to questions from an FAQ built into the app. If it cannot answer something you type, that question (3–200 characters) and your app language are saved on your device and, when you are signed in, backed up with your other account data. We may review these unanswered questions to improve the FAQ. Please do not type passwords, card numbers or other sensitive details into the assistant.</li>
+        <li><strong>Bug reports.</strong> If you send a report from Settings → Support, FinTrack sends the description you wrote, an optional contact email if you give one, your app version and build number, your Android version and your app language to our servers. Our server adds your FinTrack ID, group letter and user type from your account. Reports are readable only by us, and you can send one report every 24 hours.</li>
+      </ul>
 
       <h2 id="permissions">Permissions we request</h2>
       <p>Android requires apps to declare each permission up front. Here is what FinTrack asks for and why:</p>
@@ -160,6 +185,7 @@
         <li><strong>Sensitive fields:</strong> sign-in tokens are kept in encrypted secure storage provided by the Android operating system; your app PIN or pattern is stored on the device only as a salted hash, never in plain text.</li>
         <li><strong>App integrity:</strong> FinTrack uses Firebase App Check (Google Play Integrity) and the freeRASP security library to detect tampered, rooted or emulated environments. This processes device-integrity signals and may restrict features on compromised devices.</li>
         <li><strong>Account isolation:</strong> on a shared device, switching accounts does not expose another account's transactions, points, or settings.</li>
+        <li><strong>Home-screen widget:</strong> if you add the FinTrack widget, it shows your balance and today's transactions using data stored on your device. Anyone who can see your home screen may see those numbers; you can remove the widget at any time.</li>
       </ul>
 
       <h2 id="deletion">Account &amp; data deletion</h2>
