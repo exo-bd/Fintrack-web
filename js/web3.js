@@ -419,3 +419,84 @@
     });
   })();
 })();
+
+
+/* ==========================================================================
+   Hero floating chips — "Budget on track" ও "AI Insight" এর তথ্য মাঝে মাঝে
+   এলোমেলোভাবে বদলায় (Reminder chip স্থির থাকে)
+   • HTML এ প্রথম item-ই বসানো — JS বন্ধ বা motion-কমানো থাকলে সেটাই দেখায়
+   • একই item পরপর আসে না; দুটো chip আলাদা সময়ে বদলায়
+   • tab লুকানো বা hero স্ক্রিনের বাইরে থাকলে বদলায় না
+   • chip এর প্রস্থ আগে মেপে ঠিক রাখা হয়, যাতে লেখা বদলালে chip লাফায় না
+   ========================================================================== */
+(function chips(){
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var POOLS = [
+    { sel: '.fc-1', every: 4600, items: [
+      { ico: '✅', n: 'Budget on track', s: 'Saved 15% this month' },   // HTML এর মতোই
+      { ico: '🎯', n: 'Goal progress',   s: 'Laptop fund 62% done' },
+      { ico: '🔥', n: 'Logging streak',  s: '7 days in a row' },
+      { ico: '📈', n: 'Net worth',       s: 'Up 4% this month' },
+      { ico: '💰', n: 'Savings rate',    s: '18% of income saved' }
+    ]},
+    { sel: '.fc-2', every: 5600, items: [
+      { n: 'AI Insight', s: 'Food spend down 8%' },                    // HTML এর মতোই
+      { n: 'AI Insight', s: 'Transport spend up 5%' },
+      { n: 'AI Insight', s: 'Shopping down 12%' },
+      { n: 'AI Insight', s: 'Savings rate up 3 points' },
+      { n: 'AI Insight', s: 'Weekend spending is highest' }
+    ]}
+  ];
+
+  var hero = document.querySelector('.hero'), heroVisible = true;
+  if (hero && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(en){ heroVisible = en[0].isIntersecting; }).observe(hero);
+  }
+
+  POOLS.forEach(function(cfg, ci){
+    var chip = document.querySelector(cfg.sel);
+    if (!chip) return;
+    var ico = chip.querySelector('.fc-ico'), nm = chip.querySelector('.fc-name'), sb = chip.querySelector('.fc-sub');
+    if (!ico || !nm || !sb) return;
+    var items = cfg.items, cur = 0;
+
+    function set(it){
+      if (it.ico) ico.textContent = it.ico;
+      nm.textContent = it.n;
+      sb.textContent = it.s;
+    }
+
+    // সবচেয়ে চওড়া item অনুযায়ী min-width — mobile এ chip লুকানো (offsetWidth = 0), তখন বাদ
+    function lockWidth(){
+      if (!chip.offsetWidth) return;
+      chip.style.minWidth = '';
+      var max = chip.offsetWidth;
+      items.forEach(function(it){ set(it); max = Math.max(max, chip.offsetWidth); });
+      set(items[cur]);
+      chip.style.minWidth = Math.ceil(max) + 'px';
+    }
+    window.addEventListener('load', function(){
+      lockWidth();
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(lockWidth);
+    });
+    var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(lockWidth, 200); });
+
+    function swap(){
+      if (document.hidden || !heroVisible || !chip.offsetWidth) return;
+      var next;
+      do { next = Math.floor(Math.random() * items.length); } while (next === cur && items.length > 1);
+      cur = next;
+      chip.classList.add('fc-swap');                       // fade-out
+      setTimeout(function(){
+        set(items[cur]);
+        chip.classList.remove('fc-swap');                  // fade-in
+      }, 230);
+    }
+    function schedule(){
+      setTimeout(function(){ swap(); schedule(); }, cfg.every + Math.random() * 1800);
+    }
+    setTimeout(schedule, 2200 + ci * 1700 + Math.random() * 800);
+  });
+})();

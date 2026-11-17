@@ -161,3 +161,10 @@ body::after{
 @media (max-width: 880px){
   .closing::before{ animation:none!important; filter:blur(36px); }
 }
+
+/* ── Hero floating chips — তথ্য বদলানোর সময় নরম fade ───────────────────────── */
+.float-card .fc-ico, .float-card .fc-body{ transition:opacity .23s ease, transform .23s ease; }
+.float-card.fc-swap .fc-ico, .float-card.fc-swap .fc-body{ opacity:0; transform:translateY(5px); }
+@media(prefers-reduced-motion:reduce){
+  .float-card .fc-ico, .float-card .fc-body{ transition:none; }
+}
